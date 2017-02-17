@@ -1,5 +1,5 @@
 ---
-title: "rstudio::conf %>% notes"
+title: "rstudioconf"
 ---
 
 ## talk1 summary: tidyverse talk von hadley auf rstudio conf

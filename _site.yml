@@ -6,7 +6,7 @@ navbar:
       href: index.html
     - text: "About"
       href: about.html
-    - text: "rstudio::conf %>% notes"
+    - text: "rstudioconf"
       href: rstudio_conf_notes.html
 output:
   html_document:
