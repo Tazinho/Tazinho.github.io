@@ -4,7 +4,7 @@ title: "rstudio::conf %>% notes"
 
 ## talk1 summary: tidyverse talk von hadley auf rstudio conf
 
-quelle: rstudio talk hadley: https://www.rstudio.com/resources/videos/data-science-in-the-tidyverse/
+quelle: rstudio talk hadley:  https://www.rstudio.com/resources/videos/data-science-in-the-tidyverse/
 
 goal:solve complex problems by combining simple uniform pieces
 -consistent functions
