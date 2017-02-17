@@ -11,7 +11,7 @@
 
 
 
-<title>About This Website</title>
+<title>rstudio::conf %&gt;% notes</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -196,12 +196,19 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">About This Website</h1>
+<h1 class="title toc-ignore">rstudio::conf %&gt;% notes</h1>
 
 </div>
 
 
-<p>More about this website.</p>
+<div id="talk1-summary-tidyverse-talk-von-hadley-auf-rstudio-conf" class="section level2">
+<h2>talk1 summary: tidyverse talk von hadley auf rstudio conf</h2>
+<p>quelle: rstudio talk hadley: <a href="https://www.rstudio.com/resources/videos/data-science-in-the-tidyverse/" class="uri">https://www.rstudio.com/resources/videos/data-science-in-the-tidyverse/</a></p>
+<p>goal:solve complex problems by combining simple uniform pieces -consistent functions - a command function performs an action (print, plot, write_csv, &lt;- - a query function computes a value (summarise, mutate, geom_line) pipe code - first argument is the data - the data is the same type across a family of functions Tidy data is a consistent way of storing data - Each dataset goes in a data frame - Each variable goes in a column for list columns use tidy tibbles instead of tidy data frames biggest difference: tibbles are data frames that are lazy and surely no character to factor, no partial matching, better support for lists (defining in the creator for example) - applications: tidy text, sf (successor of the sp) uses list columns, cross validation (with list columns), tidy_quant (tidy financial timeseries), maybe ml with caret (or mlr) pipelearner, …</p>
+<p>4 principles: 1. each function encapsulates one task 2 and is either a query or a command 3. Functions are composed with “%&gt;%” 4. and use tidy tibbles as primary data structure</p>
+<p>workflow usually involves naming intermediate results, nesting and the pipe when working with many data frames it mitght be not alway the best idea</p>
+<p>dbi interface for the odbc will be worked on</p>
+</div>
 
 
 
