@@ -209,6 +209,29 @@ $(document).ready(function () {
 <p>workflow usually involves naming intermediate results, nesting and the pipe when working with many data frames it mitght be not alway the best idea</p>
 <p>dbi interface for the odbc will be worked on</p>
 </div>
+<div id="talk2-building-dashboards-with-shiny-tutorial-j-cheng" class="section level2">
+<h2>talk2 building dashboards with shiny tutorial j cheng</h2>
+<p>first part joe cheng, server side</p>
+<p>what sets a dashboard apart from ohter apps</p>
+<ul>
+<li>automatic updating</li>
+<li>potentially many viewers looking at the same data</li>
+<li>may or may not be interactive</li>
+<li>“Ten foot” user interface (designed to be seen from a distance or from mobile, …)</li>
+</ul>
+<p>techniques: - 1. reactive file reader/pull functions - 2. optimizing performance</p>
+<ol style="list-style-type: decimal">
+<li>user vs data driven events invalidate later() is ok but has overhead</li>
+</ol>
+<ul>
+<li>reactivefilereader just looks every i. e. milisecond on the timestamp of a file and the read functions are only called when the timestamp changes. first argument must be the path to data. but works just for data in files on disk. not for databases or apis</li>
+<li>reactivePoll is 2 functions first is checkfun (httr::head(api) head request for apis to see if anything changed), 2nd is valueFunc both are necessary for api or db data. no data is returned, but a reactive expression that returns a data frame.</li>
+</ul>
+<p>how do we filter arrange etc while data changes underneath… just to understand…it is done more or less automatically</p>
+<p>2 performance - Cache Results - speed up with logic, parallel or rcpp - scale hardware up/out - remove functionality .maybe rxtools package is coming to handle special functionality for reactivity, but maybe under a different name .maybe some background job functionality will be included in shiny .logging was not well introduced via shiny</p>
+<p>Userinterface (W. Chang) 1. dynamic (in clientside with html widgets) vs stable dashboards 2. flexdashboard (publish on server, RPubs, RStudoConnect, works with html_widgets, crosstalk and shiny, also auch mit reactive inputs im letzten Fall, galube ich…) 3. shinydashboard (of course one can build a shiny dashboard without these packages)</p>
+<p>deploy to server ,rstudioapps.io, rstudioconnect</p>
+</div>
 
 
 

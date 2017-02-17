@@ -32,3 +32,43 @@ when working with many data frames it mitght be not alway the best idea
 
 dbi interface for the odbc will be worked on
 
+## talk2 building dashboards with shiny tutorial j cheng
+
+first part joe cheng, server side
+
+what sets a dashboard apart from ohter apps
+
+- automatic updating
+- potentially many viewers looking at the same data
+- may or may not be interactive
+- "Ten foot" user interface (designed to be seen from a distance or from mobile, ...)
+
+techniques:
+- 1. reactive file reader/pull functions
+- 2. optimizing performance
+
+1. user vs data driven events
+invalidate later() is ok but has overhead
+- reactivefilereader just looks every i. e. milisecond on the timestamp of a file and the read functions are only called when the timestamp changes.
+first argument must be the path to data. but works just for data in files on disk. not for databases or apis
+- reactivePoll is 2 functions first is checkfun (httr::head(api) head request for apis to see if anything changed), 2nd is valueFunc both are necessary for api or db data. no data is returned, but a reactive expression that returns a data frame.
+
+how do we filter arrange etc while data changes underneath...
+just to understand...it is done more or less automatically
+
+2 performance
+- Cache Results
+- speed up with logic, parallel or rcpp
+- scale hardware up/out
+- remove functionality
+.maybe rxtools package is coming to handle special functionality for reactivity, but maybe under a different name
+.maybe some background job functionality will be included in shiny
+.logging was not well introduced via shiny
+
+Userinterface (W. Chang)
+1. dynamic (in clientside with html widgets) vs stable dashboards
+2. flexdashboard (publish on server, RPubs, RStudoConnect, works with html_widgets, crosstalk and shiny, also auch mit reactive inputs im letzten Fall, galube ich...)
+3. shinydashboard
+(of course one can build a shiny dashboard without these packages)
+
+deploy to server ,rstudioapps.io, rstudioconnect
