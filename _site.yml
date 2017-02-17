@@ -7,7 +7,7 @@ navbar:
     - text: "About"
       href: about.html
     - text: "rstudio::conf %>% notes"
-      href: rstudio_conf_nodes.html
+      href: rstudio_conf_notes.html
 output:
   html_document:
     theme: cosmo
