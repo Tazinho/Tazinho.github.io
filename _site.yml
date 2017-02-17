@@ -6,6 +6,8 @@ navbar:
       href: index.html
     - text: "About"
       href: about.html
+    - text: "Shiny::conf %>% notes"
+      href: shiny_conf_nodes.html
 output:
   html_document:
     theme: cosmo
