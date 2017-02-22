@@ -232,6 +232,23 @@ $(document).ready(function () {
 <p>Userinterface (W. Chang) 1. dynamic (in clientside with html widgets) vs stable dashboards 2. flexdashboard (publish on server, RPubs, RStudoConnect, works with html_widgets, crosstalk and shiny, also auch mit reactive inputs im letzten Fall, galube ich…) 3. shinydashboard (of course one can build a shiny dashboard without these packages)</p>
 <p>deploy to server ,rstudioapps.io, rstudioconnect</p>
 </div>
+<div id="talk-3-happy-r-users-purrr---tutorial-charlotte-wickham" class="section level2">
+<h2>talk 3 happy R users purrr - Tutorial (charlotte wickham)</h2>
+<p>lapply(people, function(x) length(x<span class="math inline">\(starships)) is equivalent to map(mtcars, ~ length(.x\)</span>starships) # map(.x, .f)</p>
+<ul>
+<li>other types of output map always returns a list some helpers for atomic returns use: map_lgl, map_int, map_dbl, map_chr (return has the same length as x). use them to have typestable output. u can use readr::parse_number for also telling what are NAs when converting to numeric when you want nothing at all, use a function for its sisde effects: walk() set names with set_names instead of names of setNames</li>
+<li>other ways of specifying .f .f can be an integer or string, i.e. f = “some_name” instead of .x[[“some_name”]] go in little steps: map(people, “starships”) %&gt;% map_int(length)</li>
+<li>other iteration functions</li>
+</ul>
+<p>when you have more than one information for a cell. try to use a list column. try to use it inside a tibble instead in a data.frame. when building the tibble from scratch with map, there is no nice functionality to turn the list to a tibble, but you really have to build every column from scratch indepentently…you can use transpose to try it, but at the moment there is no “safe” way to do this in short</p>
+<p>convenient functions for missing values map_chr(“Species”, .null = NA_character_)</p>
+<p>use map inside mutate to manipulate list columns inside a tibble/data.frame …sometimes it’s nice to use lookup tables inside map…</p>
+<p>collapse a character list column, so that each element is a paseted strings with an appropriate separator (use collapse) -&gt; sth like mutate(new_col = paste(old_col, collapse = “,”)) so the following should work: map_chr(old_column, paste(.x, collapse “,”)) # before pasting one can sort and so on of course.</p>
+<p>walk is like map, but you get nothing back (you get it back invisible, so you can do some side effect inside a pipe and continue the pipeline in the same go). side effects = “printing to screen, plotting to gr dev, file manipulation (save, write, move, etc), system calls”</p>
+<p>map2 iterates over to listts -&gt; map2(.x, .y, .f) there are also walk2, map2_lgl, map2_int, map2_dbl, map2_chr</p>
+<p>use map2 for writing, downloading etc different objects to different files… use pmap, it is like map and map2, just for 3 or more arguments use invoke map to apply many different functions to one argument</p>
+<p>many helpers for lists and functions.. safely takes a function and returns a function transpose takes and returns a list… the combination of the last two is very good for dealing with errorcatching…</p>
+</div>
 
 
 
