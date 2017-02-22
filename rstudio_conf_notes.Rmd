@@ -72,3 +72,48 @@ Userinterface (W. Chang)
 (of course one can build a shiny dashboard without these packages)
 
 deploy to server ,rstudioapps.io, rstudioconnect
+
+## talk 3 happy R users purrr - Tutorial (charlotte wickham)
+
+lapply(people, function(x) length(x$starships))
+is equivalent to
+map(mtcars, ~ length(.x$starships) # map(.x, .f)
+
+- other types of output
+map always returns a list
+some helpers for atomic returns use: map_lgl, map_int, map_dbl, map_chr (return has the same length as x). use them to have typestable output.
+u can use readr::parse_number for also telling what are NAs when converting to numeric
+when you want nothing at all, use a function for its sisde effects: walk()
+set names with set_names instead of names of setNames
+- other ways of specifying .f
+.f can be an integer or string, i.e. f  = "some_name"  instead of .x[["some_name"]]
+go in little steps: map(people, "starships") %>% map_int(length)
+- other iteration functions
+
+when you have more than one information for a cell. try to use a list column. try to use it inside a tibble instead in a data.frame. when building the tibble from scratch with map, there is no nice functionality to turn the list to a tibble, but you really have to build every column from scratch indepentently...you can use transpose to try it, but at the moment there is no "safe" way to do this in short
+
+convenient functions for missing values map_chr("Species", .null = NA_character_)
+
+use map inside mutate to manipulate list columns inside a tibble/data.frame
+...sometimes it's nice to use lookup tables inside map...
+
+collapse a character list column, so that each element is a paseted strings with an appropriate separator (use collapse) -> sth like
+mutate(new_col = paste(old_col, collapse = ", "))
+so the following should work:
+map_chr(old_column, paste(.x, collapse ", ")) # before pasting one can sort and so on of course.
+
+walk is like map, but you get nothing back (you get it back invisible, so you can do some side effect inside a pipe and continue the pipeline in the same go).
+side effects = "printing to screen, plotting to gr dev, file manipulation (save, write, move, etc), system calls"
+
+map2 iterates over to listts -> map2(.x, .y, .f)
+there are also
+walk2, map2_lgl, map2_int, map2_dbl, map2_chr
+
+use map2 for writing, downloading etc different objects to different files...
+use pmap, it is like map and map2, just for 3 or more arguments
+use invoke map to apply many different functions to one argument
+
+many helpers for lists and functions..
+safely takes a function and returns a function
+transpose takes and returns a list...
+the combination of the last two is very good for dealing with errorcatching...
