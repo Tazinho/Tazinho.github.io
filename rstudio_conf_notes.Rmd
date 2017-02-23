@@ -117,3 +117,13 @@ many helpers for lists and functions..
 safely takes a function and returns a function
 transpose takes and returns a list...
 the combination of the last two is very good for dealing with errorcatching...
+
+## Talk 34 (d2): All Things R and RStudio, Q & A with J.J. Allaire, Hadley Wickham & Joe Cheng, Moderator: Joseph Rickert
+
+upcoming:
+interface to tensorflow deep learning and machine learning
+thoughts about default parallelization...problems about api, because parallelisation ways differ so much on different os'ses.
+
+Needed in base R:
+64bit integers
+out of memory vectors (pointers)
