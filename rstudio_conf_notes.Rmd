@@ -118,6 +118,57 @@ safely takes a function and returns a function
 transpose takes and returns a list...
 the combination of the last two is very good for dealing with errorcatching...
 
+## talk 13 Writing Readable Code with Pipes – Bob Rudis
+
+- 81 Packages on Cran that export the pipe operator
+- use ndjson for faster json parsing
+- use anytime for faster date time stuff
+- use stop_for_status() to look into the risky data stuff within the pipeline
+- use list.files %>% map_df
+
+## talk 14 (d1) Mapping in R with Leaflet – Bhaskar Karambelkar
+
+- based on version 0.7 of the leaflet javascript library.
+The most actual one is version 1.0
+- pacakges of the presentation: sp, rgdal, rgeos, raster, rmapshaper, tigris, acs, sf,  mapview, geojson, geojsonio
+- the wholel grafic is rendered as a svg
+- many controls, buttons and plugins (the latter is outstanding and special within leaflet).
+
+Adv. Concepts
+- various panes with different visibility. Order of mapping is not important, cause this is done internally.
+- u can catch events for html stuff or shiny
+- u can use groups and players
+- huge mass of plugins, a whole ecosystem (like also d3 has).
+
+-leafletProxy is used within shiny to add sth to already existing maps
+- leaflet/adxxx have options arguments, which can be quite nice
+- you can use tiles from cartodb
+- addLayersControl("Dark", "Light")
+- new markers: addAwesomeMarkers, addLabelOnlyMarkers
+
+- more hover options, also for polygons...
+- better and more projections like mercator...
+- use shiny to capture events,..
+
+- leaflet.extras, for added plugins...
+- at the moment on github. on cran soon...
+- leaflet will be stable
+- leaflet.extras will be dynamic
+
+- topojason for dynamic chloropleth maps is awesome...
+- for now everything thrown into leaflet has to be in lat/lng. however this is discussed and might be more flexible someday
+
+## talk 24 (d2) Opinionated Analysis Development Hilary Parker
+~ try to blame the process and not the person -> when errors occur, optimise the process
+
+## talk 33 (d2) R’s Role in Data Science – Joseph Rickert
+
+distinction of data engineering vs data science
+"most of the time engineers know what they are doing"
+
+ds:bring scientific method into engineering
+...
+
 ## Talk 34 (d2): All Things R and RStudio, Q & A with J.J. Allaire, Hadley Wickham & Joe Cheng, Moderator: Joseph Rickert
 
 upcoming:
