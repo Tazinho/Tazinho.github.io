@@ -249,6 +249,140 @@ $(document).ready(function () {
 <p>use map2 for writing, downloading etc different objects to different files… use pmap, it is like map and map2, just for 3 or more arguments use invoke map to apply many different functions to one argument</p>
 <p>many helpers for lists and functions.. safely takes a function and returns a function transpose takes and returns a list… the combination of the last two is very good for dealing with errorcatching…</p>
 </div>
+<div id="talk4-whats-new-with-shiny-joe-cheng" class="section level2">
+<h2>talk4 What’s new with Shiny – Joe Cheng</h2>
+<p>near future: - automated testing - shiny tests - write tests - run tests - update in a sandbox and run tests - compare tests - decide if you can take the update or have to debug + test event recorder to record named tests for the userinterface -&gt; json of the shiny states during the recording/snapshot, and also png to get the overall picture of the bug - api endpoints</p>
+<p>after that: - asynchronous tasks</p>
+<p>limitations: - not suitable for all cases. for example not for random actions (maybe set.seed) - api might change (its not on cran yet) - some dependencies (cran again)</p>
+<ul>
+<li>possibility to catch values with api that were created by interactive use of shiny</li>
+<li>usage /api/… you get the data as csv, json or whatever you define</li>
+<li>readable from python, r, c#, whatever</li>
+<li>possibility for api to activate the interactive widgets</li>
+<li>at the moment only data retrieving and no authentification at the moment</li>
+</ul>
+</div>
+<div id="talk5-database-best-practices-jim-hester" class="section level2">
+<h2>talk5 Database Best Practices – Jim Hester</h2>
+<ul>
+<li><p>shows latest work at dbi, odbc, pool</p></li>
+<li>dbi is a unified interface for databases</li>
+<li>(was alos available for s+)</li>
+<li>rstudio took over maintenance</li>
+<li>will be in next dplyr release</li>
+<li>databasebackends just have to work with dbi interface,</li>
+<li>no need anymore to customize dplyr backends specifically</li>
+<li><p>dbitest for tests…</p></li>
+<li>odbc will be on cran</li>
+<li>is dbi compatible</li>
+<li>is a rewrite of the rodbc package</li>
+<li>odbc standard is separate from this “odbc” package</li>
+<li>every odbc connectable database backend might be used with this package</li>
+<li>native support for timestamps and raw binary formats (no coercing date-&gt; string necessary …)</li>
+<li>supports batch queries, which makes it a bit (~ 2times) faster than rodbc</li>
+<li>supports parameterized queries</li>
+<li>includes some wrappers for strings to avoid dropping tables in the db-backend</li>
+<li><p>insert into xyz (?,?),dbBind() (so you can set r objects as parameters, “?” are placeholders)</p></li>
+<li>u can set a knitr option (connection = con)</li>
+<li>u can use sql code chunks in knitr, it will know the connection if set in options</li>
+<li>u can write queries as functions and give arguments to interact with the result… (maybe it would be good to catch the result, will have to look at the memory issues)</li>
+<li><p>u can build a shiny app to interact with the database</p></li>
+<li>pool makes it possible to let many people interact with a database (maybe interacting with the db)</li>
+<li>issues before, r is single threaded, so everybody has to wait. other solution: new connection for each person, but there is a limit for maximal open connection.</li>
+<li>pool opens some connections and gives connections that are already open.</li>
+<li>pool is faster, because …</li>
+<li><p>tries to reestablish connection (and you dont have to care about too many details, when failure occur)</p></li>
+</ul>
+<p>future: - generic connection tab in rstudio (like the one for sparklyr) - reestablish previous connections - viewer for available drivers - view sources - view tables - view schemes -&gt; within rstudio v 1.1 &lt;3</p>
+<p>rstudio server pro: - easy setup for a wide variety of db (50+, including hive, impala, postgresq, mysql) - improved performance - improved error messaging - kerberos support</p>
+</div>
+<div id="talk6-push-button-publish-in-rstudio-connect-jeff-allen" class="section level2">
+<h2>talk6 Push-Button Publish in RStudio Connect – Jeff Allen</h2>
+<p>how to safe achievements?</p>
+<ul>
+<li>email, sharepoint, … -&gt; rstudio connect one button from rstudio to rstudio connect and managing the publish stuff</li>
+<li>self managed content like markdown, shiny, plots</li>
+<li>scheduled rendering</li>
+<li>enterprise security</li>
+<li>on premise, commercial support</li>
+<li>creates the same environment on the server like the one which was used locally (all packages,…)</li>
+<li>publishing options private, public, …</li>
+<li>returns a url, which will be refreshed when reports are updated</li>
+<li>schedule rmarkdown reports</li>
+<li>good idea to use parameterized rmarkdown, can be defined in the yaml block of rmd files -&gt; knit with parameters… these will also work, when published. Then the reports can be filtered by users and regenerated per push button by the user. You get the full functionality without thinking about shiny.</li>
+<li><p>you can get emailed copies of the reports</p></li>
+<li>also able to host shiny, with multiple processes and loadbalancers</li>
+<li><p>you can get the logs (on r studio pro)</p></li>
+<li>to rebuild the environment, packrat is used.</li>
+<li>it-friendly (enterprise), auth, passwords, monitoring,…</li>
+<li><p>beta for a year now</p></li>
+</ul>
+<p>next: - self content organization - choosing the hierarchy - usage of tags - kerberos support - bundle management - rollback</p>
+<ul>
+<li><p>feature to load up source code</p></li>
+<li>free day 45 trial</li>
+<li>also hosted by rstudio</li>
+<li><p>available on linux/virtual machine</p></li>
+</ul>
+</div>
+<div id="talk-7-r-and-spark-javier-luraschi" class="section level2">
+<h2>talk 7: R and Spark – Javier Luraschi</h2>
+<ul>
+<li>test locally, spark_install(), spark_connect(master = “local”)</li>
+<li>copy data to spark, use dplyr, …</li>
+<li>for modelling use sparkfunctions</li>
+<li>dont need dplyr, you can also use dbi package and use sql statements</li>
+<li>supports extentions: run scala from sparklyr, via invoke(context, version), runs on the cluster</li>
+<li>use scalafiles, get results to r interface (advanced)</li>
+<li>more functions</li>
+<li>more r behaviour, df, and NAs</li>
+<li>experimental livy support (to connect remote from rstudio)</li>
+<li>rstudio and shiny server pro certified with cloudera</li>
+<li>config[[spark-shell-memory]] or so to give more memory then 500mb default or so</li>
+</ul>
+</div>
+<div id="talk9-using-web-apis-from-r-amanda-gadrow" class="section level2">
+<h2>talk9 Using Web APIs from R – Amanda Gadrow</h2>
+<ul>
+<li>some nice api packages: aws.s3, RGoogleAnalytics, acs, etc.</li>
+<li>httr for requests (lots of functionality and very consistent)</li>
+<li>xml2, jsonlite for parsing the response</li>
+</ul>
+</div>
+<div id="goal" class="section level1">
+<h1>goal</h1>
+</div>
+<div id="verb-get-for-example" class="section level1">
+<h1>verb (get for example)</h1>
+</div>
+<div id="endpoint-url" class="section level1">
+<h1>endpoint (url)</h1>
+</div>
+<div id="parameters-keyword-tag---query" class="section level1">
+<h1>parameters (keyword, tag,… -&gt; query)</h1>
+<p>usage: GET(), content(), fromJSON, stop_for_status() (in pipes to invest the header), writing helpers to parse sometimes, GET(page<span class="math inline">\(next) to go through pages, possible to write this as a loop via while (!is.null(page\)</span>next))</p>
+<p>you can schedule api calls via rstudioconnect (or other ways), you can also run them regular from s3</p>
+<div id="talk11-competitive-modeling-of-outcomes-for-prediction-max-kuhn" class="section level2">
+<h2>talk11: Competitive Modeling of Outcomes for Prediction – Max Kuhn</h2>
+<ul>
+<li>gain &amp; lift…</li>
+</ul>
+</div>
+<div id="talk12-fun-with-htmlwidgets3d-interactive-network-visualization-with-threejs-and-r-bryan-lewis" class="section level2">
+<h2>talk12: Fun with htmlwidgets:3D interactive network visualization with threejs and R – Bryan Lewis</h2>
+<ul>
+<li>introduced 2 years ago</li>
+<li>now first major update</li>
+<li>less to learn, less overhead …</li>
+<li>good combi with other packages especially igraph</li>
+<li>can do graphs on globes</li>
+<li>scatterplot3js is the internal working horse</li>
+<li>new: network visualisation with graphjs function, similar to igraph (extends it)</li>
+<li>easy animation</li>
+<li>3d layouts</li>
+<li>easy to play with really big graphs</li>
+</ul>
+</div>
 <div id="talk-13-writing-readable-code-with-pipes-bob-rudis" class="section level2">
 <h2>talk 13 Writing Readable Code with Pipes – Bob Rudis</h2>
 <ul>
@@ -281,6 +415,124 @@ $(document).ready(function () {
 <li><p>for now everything thrown into leaflet has to be in lat/lng. however this is discussed and might be more flexible someday</p></li>
 </ul>
 </div>
+<div id="talk16-linking-html-widgets-with-crosstalk-joe-cheng" class="section level2">
+<h2>talk16 Linking HTML Widgets with Crosstalk – Joe Cheng</h2>
+<ul>
+<li>crosstalk is somehow the webbased extension of cranvas and/or ggobi (coordinated multiple views)</li>
+<li>htmlwidgets is unopinionated, you have all freedom to access any js library, …</li>
+<li>three approaches to this: crosstalk, shiny, js (robservable)</li>
+<li>filtering and linked brushing for data based on data frames (crosstalk) syntaxdifferences: data &lt;- quakes; leaflet(data) %&gt;% addMarkers; datatable(data) vs data &lt;- SharedData$new(data); leaflet(data) %&gt;% addMarkers; datatable(data)</li>
+</ul>
+</div>
+<div id="talk18-trelliscopejs-ryan-hafen" class="section level2">
+<h2>talk18 TrelliscopeJS – Ryan Hafen</h2>
+<ul>
+<li>interactive displays of small multiples</li>
+<li>based on the javascript package from the same author</li>
+<li>facet_trelliscope fits in the ggplot workflow, but gives you pages of facets, which can lead to a better overview.</li>
+<li>it also gives you filters and sorts</li>
+<li>facets can include plotly graphics (so widgets inside a widget)</li>
+<li>plots list columns of plots (interactive)</li>
+<li>fits well with tidyverse workflow</li>
+<li>works good with sparklyr</li>
+<li>“kind of a database of images that you can query”</li>
+<li>a lot more to come, especially filters for more datatypes</li>
+<li>should work with base, lattice, ggplot2 and any html widget, bokeh, plotly, etc</li>
+<li>uses crossfilter behind the scenes (should work for 1 million rows (or more?))</li>
+<li>works in browser, so there are limitations…</li>
+<li>fit in one markdown vis</li>
+<li>has bookmarkable/sharable state</li>
+</ul>
+</div>
+<div id="talk-19-teaching-introductory-statistics-using-the-tidyverse-via-bookdown-chester-ismay" class="section level2">
+<h2>talk 19: Teaching Introductory Statistics Using the tidyverse via bookdown – Chester Ismay</h2>
+<ul>
+<li>bringing R to different subjects in school</li>
+<li>writing a book to lower the barrier to return to the language</li>
+<li>writing a book to use the interactive and build up a formula paradigm</li>
+</ul>
+</div>
+<div id="talk-20-lightning-talks-user-submitted-talks" class="section level2">
+<h2>talk 20: Lightning Talks – User Submitted Talks</h2>
+<ol style="list-style-type: decimal">
+<li>easyMake (package)</li>
+</ol>
+<ul>
+<li>tries to build dependency graphs of analysis</li>
+<li>tries to build make files upon</li>
+<li>also has an RStudio plugin</li>
+<li>gives a working makefile, not a perfect one</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>ROpenSci packages every muggle should have heard about (Kathik Ram)</li>
+</ol>
+<ul>
+<li>Magick package, helps you with images transformate, read, write, some magic stuff, …</li>
+<li>perfect with gganimate</li>
+<li>pipefriendly</li>
+<li>hunspell</li>
+<li>spellcheking in R for text and textanalysis</li>
+<li>lots of advanced functionality</li>
+<li>Tesseract</li>
+<li>Travis + tic</li>
+<li>add tic to your travis yaml</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>Scalable Data Science with R and Spark – Best Practices and Lessons Learned</li>
+</ol>
+<ul>
+<li>Rdd</li>
+<li>DataFrames</li>
+<li>Transformers
+<ul>
+<li>Actions</li>
+</ul></li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li><p>ggedit: interactive ggplot aesthetic and theme editor</p></li>
+<li>Exploring correlations in a tidy R framework with corrr</li>
+</ol>
+<ul>
+<li>correlations in data frames instead of a matrix</li>
+<li>use stretch() for long format</li>
+<li>everything pipeable</li>
+<li>fcts for printing, plotting, clustering</li>
+<li>recomments widyr for structures that are not perfect for tidy format</li>
+</ul>
+<ol start="6" style="list-style-type: decimal">
+<li>Exploration of Literature Databases with Shiny</li>
+</ol>
+<ul>
+<li>shiny in production</li>
+</ul>
+<ol start="7" style="list-style-type: decimal">
+<li><p>Business intelligence with R bi plattform ending in R backend + data (googlesheets, mysql, python, crm, …) -&gt; googlebigquery -&gt; flexdashboard (incl. shiny, used a child rmd file -&gt; every page has its own file) + highcharter</p></li>
+<li>bsplus: Using Bootstrap to extend your Shiny app</li>
+</ol>
+<ul>
+<li>you want to put more stuff into your shiny app</li>
+<li>a lot of additional stuff depends on the ui, not the serverside</li>
+<li>everything pipeable</li>
+<li>is coming to cran</li>
+</ul>
+<ol start="9" style="list-style-type: decimal">
+<li><p>Bringing R Into Dev: Playing Nice With Others use shiny, bash and feather. the latter plays nicely with python and julia</p></li>
+<li>FlashR: Parallelize and Scale R Machine</li>
+</ol>
+<ul>
+<li>redefines r matrix functions to work with bigger data (overwrites them)</li>
+<li>mainly switches functions that create r objects into functions that create flashR objects</li>
+<li>uses same api as base r</li>
+<li>brings parallelization out of the box</li>
+<li>executes (and stores) out of memory</li>
+<li>outperforms revolution r :D</li>
+<li>easy to use, fast and you can test it on the webpage flashx.io</li>
+</ul>
+</div>
+<div id="tallk21-finding-and-telling-stories-with-r-andrew-flowers" class="section level2">
+<h2>tallk21: Finding and Telling Stories with R – Andrew Flowers</h2>
+<p>subtitle “6 types of data stories and how to find them” - good journalism is good storytelling</p>
+</div>
 <div id="talk-24-d2-opinionated-analysis-development-hilary-parker" class="section level2">
 <h2>talk 24 (d2) Opinionated Analysis Development Hilary Parker</h2>
 <p>~ try to blame the process and not the person -&gt; when errors occur, optimise the process</p>
@@ -294,6 +546,7 @@ $(document).ready(function () {
 <h2>Talk 34 (d2): All Things R and RStudio, Q &amp; A with J.J. Allaire, Hadley Wickham &amp; Joe Cheng, Moderator: Joseph Rickert</h2>
 <p>upcoming: interface to tensorflow deep learning and machine learning thoughts about default parallelization…problems about api, because parallelisation ways differ so much on different os’ses.</p>
 <p>Needed in base R: 64bit integers out of memory vectors (pointers)</p>
+</div>
 </div>
 
 
