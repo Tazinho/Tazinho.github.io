@@ -249,6 +249,23 @@ next:
 - rstudio and shiny server pro certified with cloudera
 - config[[spark-shell-memory]] or so to give more memory then 500mb default or so
 
+
+## talk 8: Dynamic Shiny Interfaces – Bárbara Borges Ribeiro
+- dynamic ui means that you return a plot, a summary or a table depending on the choose of a user
+- there are not too many use cases, since normally one works only on a table or only on a table...
+- should one use render or input ui
+- render ui generates a slot for the output and however we choose the input, we just get the specific output
+- basically you use just regular shiny objects
+- there are limitations for render ui. if you have 30 inputs and maybe want to see some of them at the same time. its possible, but then you had to provide outputslots for them, which you would like to do independently.
+- example: add independently different functions on different datasets
+- instertUI: works like renderUI. Needs an action button. you have to define where new output is added (usually starting with some placeholder). it doesnt look like usual shiny. no ui-server pairs.Wrap things into tag list and div.
+- summary:
+ - renderUI, feels more like "shiny" and is a bit safer, brings less trouble, doesn't need events (has reactivity by default), easily bookmarkable
+ - insertUI is a lot trickier, you have to know a bit what you are doing. Is a lot more flexible. You can do everything like with renderUI, but also much more, longer code, harder to debug and to bookmark,
+ it is nice to compare different plots or other things side by side.
+- there are also other ways for dynamic shiny, like conditional panels or any javascript stuff.
+- you should use renderUI, when reactive ui is enough.
+
 ## talk9 Using Web APIs from R – Amanda Gadrow
 
 - some nice api packages:
@@ -332,6 +349,19 @@ syntaxdifferences:
 data <- quakes;                           leaflet(data) %>% addMarkers; datatable(data)
 vs
 data <- SharedData$new(data); leaflet(data) %>% addMarkers; datatable(data)
+
+## talk 17: Text Mining the tidy Way – Julia Silge
+- get a text, safe the line, use unnest_tokens(word, text) and get the format of one word per row.
+- stop words: tidy_books %>% dplyr::anti_join(stop_words)
+- counts: tidy_books %>% dplyr::cout(word, sort = TRUE)
+- sentiments analysis: tidy_books %>% inner_join(get_sentiments("bing"))
+- what is a document about: inverse document frequency (better than removing stop words): calculate for each book how often each words occurs (in percent).
+ tf_idf: ...
+- if you have tagged articles it is nice to sort the included words by the heights of their tf_idf's
+- ngrams, networs, negates (skipped)
+- convert between tidy and non tidy formats. allows you to use operations on classical textmining datastructures with the classical implemented methods. than you can switch back to the tidy format.
+- book: tidy text mining (includes case studies)
+- if you have different speakers, extend then to a column, before unnesting into the tidy format
 
 ## talk18 TrelliscopeJS – Ryan Hafen
 - interactive displays of small multiples
@@ -419,8 +449,87 @@ use shiny, bash and feather. the latter plays nicely with python and julia
 subtitle "6 types of data stories and how to find them"
 - good journalism is good storytelling
 
+## talk 22 Advanced R Markdown Tutorial – Yihui Xie
+- rmarkdown = knitr + pandoc
+- raw (outside of a chunk) latex or html will only work in the specific documenttype
+- converts to markdown and markdown passes arguments to pandoc
+- outputformate können über output_format's basetype argument angepasst werden
+- yaml is translated into rmarkdown::render arguments
+- you can set some yml options to null, like theme bootstrap (default) can changed and that makes output sometimes smaller
+- can pass own css styles
+- use developer tools (for example in chrome) . you can customize the html tag p for paragraph within the browser (as experimentation add for example color: red;) and later change this directly in rstudio via copy paste and saving the css as external css file and apply this to yml via css:path/of/css/file. you can do the same with javascript.
+you can do this as a vector; css: [path1, path2, path3]
+- you can also customize via the template option. defaults for templates are on github.
+- only output field of yml is for markdown. the rest is for pandoc and can be found in its documentation
+- some nice deeper customization is available via in.header, before.body, after.body
+- you can write your own package to extend further options
+- how markdown handles this internally is explained in the talk
+- via pre and postproces, you can change some things, that can't be done with pandoc.
+- this is for example used to preserve html widgets content in rmarkdown
+- most important for using/providing a template is the yml output
+(2 approaches are shown [jss rticlle, tufte handout])
+- xaringan ports remark.js but some markdown shoudnt be touched by pandoc. therefore you can hide somehow some part of it via the preprocessor step explained before. (the document /html parts can be broken via some line with a split...)
+- it is an awesome presentation framework, (haked by yihui within 3 days)
+- bookdown (worked on it whole 2016). outputs: pdf, html, ebooks. writing on a specific postprocessor took most of the time, cause many features had to be synchronized between different  output formats (the real challenge is to make sth work for multiple outputformats at the same time.). makes extensive use of regular expressions.
+- three tips from his life as a software developer:
+1. you cant make everyone happy. focus first on making one person veryvery happy.
+2. use humor and provide little easter eggs. think differently
+3. stand on the shoulders of giants. you dont have to know about c, c++, python, ..., but you can reuse frameworks and build up on them or their ideas.
+4. keep calm, say no, say sorry, if it is too complex problem. and has a very easy practical workaround that is easy for the user. it will be ok for them.
+5. reask the user why he wants sth. maybe his intention is strange and afterwards he doesnt  have the feature request anymore.
+6. be very open and engagng to users in the open source and pull requests. maybe others can contribute and work further on your package
+
 ## talk 24 (d2) Opinionated Analysis Development Hilary Parker
 ~ try to blame the process and not the person -> when errors occur, optimise the process
+
+## talk 25: What’s New with the IDE – Kevin Ushey
+- uses up to date version 1.0.136 in the talk
+  - lots of autocompletion via tab, in different linces, in and outside of functions, fuzzily, for paths, ...
+  - works also nice when implementing shiny stuff
+  - is smart to know, when u want...for example an environment, options, ...
+  - autocompletes the methods for object.method syntax within rcpp
+- there is a new "Rstudio Home button" in the rstudio-file-pane
+- diagnostics
+  - u get symbols noting when code is expected to fail, because of some syntax related errors,
+  - but there are some other cool thins, like unknown function arguments, no definition in scope, defined, but not used
+  - configurable inside options -> diagnostics
+  - some small things, like defining whitespaces around binary operators.
+- command + enter executes a whole expression
+- cmd + alt + shift + up/down to expand selections, for example if statements
+- rename in (parent/bracket) scope (can be done via the gui, but there is also a shortcut)
+- some nice stuff for roxygen
+- some nice stuff for s4 classes
+- highlight ugly code and press cmd + shift + a to format to nice code
+- strg + alt gives you multiple cursors
+- there is a document outline view in the gui for rmarkdown now
+- strg + alt + i to use code chunks
+- inline latex $$
+- can execute and render python (and many other) chunks (uses default engine, but you can set this path)
+- alt + shift + k for shortcuts
+
+## talk 31: Extending R with C++: A Brief Introduction to Rcpp – Dirk Eddelbuettel
+- computer age statistical inference by hastie and efron (book recommendation)
+- in this state of the art book, everything is done with r :)
+- extendig r by j. m. chambers, opening in chapter 1:
+  - everything in r is an object
+  - everything that happens in r is a function call
+  - interfaces to other software are a part of r
+- r is a c program (and r and fortran, ...) and you can expand this, so there is already an api, via the .call interface, .c is deprecated.
+- you always get an SEXP back (mapping from r objects to c), we can have this for all r objects.
+- dont need to do memory allocation, just allocate a vector...
+- library("Rcpp")
+- evalcpp("2+2") # testcase
+- cppfunction("some code", plugins = c("cpp11"))
+- sourceCpp is workhorse behind evlCpp function
+- rcpp function initialisation does compile, link, load
+- use it in/with packages. do "package with rcpp" when creating a package
+- u can extend your packages with templates for rcpp, eigen, armadillo, devtools
+- 3 ways to extend r with rcpp
+  - just use the rcpp objects
+  - use LinkingTo for other only header pacakges like, eigen, armadillo, BH
+  - doable: external libraries may require a little bit more work but entirely feasible
+- many rcpp versions of ml algorithms available
+- gallery rcpp with 100 examples, + book, + website
 
 ## talk 33 (d2) R’s Role in Data Science – Joseph Rickert
 
