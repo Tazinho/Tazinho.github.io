@@ -1,124 +1,128 @@
 ---
-title: "rstudioconf"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
 ---
 
-## talk1 summary: tidyverse talk von hadley auf rstudio conf
+## talk1 (62 min): Data Science in the Tidyverse – Hadley Wickham [link](https://www.rstudio.com/resources/videos/data-science-in-the-tidyverse/)
 
-quelle: rstudio talk hadley:  https://www.rstudio.com/resources/videos/data-science-in-the-tidyverse/
-
-goal:solve complex problems by combining simple uniform pieces
--consistent functions
-  - a command function performs an action (print, plot, write_csv, <-
-  - a query function computes a value (summarise, mutate, geom_line)
-pipe code
- - first argument is the data
- - the data is the same type across a family of functions
+* goal:solve complex problems by combining simple uniform pieces 
+* consistent functions  
+    * a command function performs an action (print, plot, write_csv, <-)  
+    * a query function computes a value (summarise, mutate, geom_line)
+* pipe code
+    - first argument is the data
+    - the data is the same type across a family of functions
 Tidy data is a consistent way of storing data
  - Each dataset goes in a data frame
  - Each variable goes in a column
-for list columns use tidy tibbles instead of tidy data frames
-biggest difference: tibbles are data frames that are lazy and surely
-no character to factor, no partial matching, better support for lists (defining in the creator for example)
-- applications: tidy text, sf (successor of the sp) uses list columns, cross validation (with list columns), tidy_quant (tidy financial timeseries), maybe ml with caret (or mlr) pipelearner, ...
+* for list columns use tidy tibbles instead of tidy data frames
+    * biggest difference: tibbles are data frames that are lazy and surely
+        * no character to factor, 
+        * no partial matching, 
+        * better support for lists (defining in the creator for example)
+- applications: tidy text, sf (successor of the sp, uses list columns), cross validation (with list columns), tidy_quant (tidy financial timeseries), maybe ml with caret (or mlr) pipelearner, ...
 
-4 principles:
+- 4 principles:
 1. each function encapsulates one task
-2 and is either a query or a command
-3. Functions are composed with "%>%"
+2. and is either a query or a command
+3. Functions are composed with `%>%`
 4. and use tidy tibbles as primary data structure
 
-workflow usually involves naming intermediate results, nesting and the pipe
-when working with many data frames it mitght be not alway the best idea
+* workflow usually involves naming intermediate results, nesting and the pipe
+* when working with many data frames it mitght be not alway the best idea
 
-dbi interface for the odbc will be worked on
+* dbi interface for the odbc will be worked on
 
-## talk2 building dashboards with shiny tutorial j cheng
+## talk 2 (117 min): Building Dashboards with Shiny Tutorial – Joe Cheng & Winston Chang [link](https://www.rstudio.com/resources/videos/building-dashboards-with-shiny-tutorial/)
 
-first part joe cheng, server side
+* **first part joe cheng, server side**
 
-what sets a dashboard apart from ohter apps
+* what sets a dashboard apart from ohter apps
+    - automatic updating
+    - potentially many viewers looking at the same data
+    - may or may not be interactive
+    - "Ten foot" user interface (designed to be seen from a distance or from mobile, ...)
 
-- automatic updating
-- potentially many viewers looking at the same data
-- may or may not be interactive
-- "Ten foot" user interface (designed to be seen from a distance or from mobile, ...)
-
-techniques:
-- 1. reactive file reader/pull functions
-- 2. optimizing performance
+* techniques:
+    - 1. reactive file reader/pull functions
+    - 2. optimizing performance
 
 1. user vs data driven events
-invalidate later() is ok but has overhead
-- reactivefilereader just looks every i. e. milisecond on the timestamp of a file and the read functions are only called when the timestamp changes.
-first argument must be the path to data. but works just for data in files on disk. not for databases or apis
-- reactivePoll is 2 functions first is checkfun (httr::head(api) head request for apis to see if anything changed), 2nd is valueFunc both are necessary for api or db data. no data is returned, but a reactive expression that returns a data frame.
+    * invalidate later() is ok but has overhead
+    - reactivefilereader just looks every i. e. milisecond on the timestamp of a file and the read functions are only called when the timestamp changes.
+    * first argument must be the path to data. but works just for data in files on disk. not for databases or apis
+    - reactivePoll is 2 functions first is checkfun (httr::head(api) head request for apis to see if anything changed), 2nd is valueFunc. Both are necessary for api or db data. no data is returned, but a reactive expression that returns a data frame.
 
-how do we filter arrange etc while data changes underneath...
+* how do we filter arrange etc while data changes underneath...
 just to understand...it is done more or less automatically
 
-2 performance
-- Cache Results
-- speed up with logic, parallel or rcpp
-- scale hardware up/out
-- remove functionality
-.maybe rxtools package is coming to handle special functionality for reactivity, but maybe under a different name
-.maybe some background job functionality will be included in shiny
-.logging was not well introduced via shiny
+2. performance
+    - Cache Results
+    - speed up with logic, parallel or rcpp
+    - scale hardware up/out
+    - remove functionality
+* maybe rxtools package is coming to handle special functionality for reactivity, but maybe under a different name
+* maybe some background job functionality will be included in shiny
+* logging was not well introduced via shiny
 
-Userinterface (W. Chang)
+* **Userinterface (W. Chang)**
 1. dynamic (in clientside with html widgets) vs stable dashboards
 2. flexdashboard (publish on server, RPubs, RStudoConnect, works with html_widgets, crosstalk and shiny, also auch mit reactive inputs im letzten Fall, galube ich...)
-3. shinydashboard
+3. shinydashboard  
 (of course one can build a shiny dashboard without these packages)
 
-deploy to server ,rstudioapps.io, rstudioconnect
+* deploy to server ,rstudioapps.io, rstudioconnect
 
-## talk 3 happy R users purrr - Tutorial (charlotte wickham)
+## talk 3 (130 min): happy R users purrr - Tutorial (charlotte wickham) [link](https://www.rstudio.com/resources/videos/happy-r-users-purrr-tutorial/)
 
-lapply(people, function(x) length(x$starships))
-is equivalent to
-map(mtcars, ~ length(.x$starships) # map(.x, .f)
+* `lapply(people, function(x) length(x$starships))` is equivalent to:  
+`map(mtcars, ~ length(.x$starships) # map(.x, .f)`
 
 - other types of output
-map always returns a list
-some helpers for atomic returns use: map_lgl, map_int, map_dbl, map_chr (return has the same length as x). use them to have typestable output.
-u can use readr::parse_number for also telling what are NAs when converting to numeric
-when you want nothing at all, use a function for its sisde effects: walk()
-set names with set_names instead of names of setNames
+* map always returns a list
+* some helpers for atomic returns use: map_lgl, map_int, map_dbl, map_chr (return has the same length as x). use them to have typestable output.
+* u can use readr::parse_number for also telling what are `NAs` when converting to numeric
+* when you want nothing at all, use a function for its sisde effects: `walk()`
+* set names with set_names instead of names of setNames
 - other ways of specifying .f
-.f can be an integer or string, i.e. f  = "some_name"  instead of .x[["some_name"]]
-go in little steps: map(people, "starships") %>% map_int(length)
-- other iteration functions
+    * .f can be an integer or string, i.e. `f  = "some_name"`  instead of `.x[["some_name"]]`
+* go in little steps: map(people, "starships") %>% map_int(length)
+- other iteration functions ...
+  
+* when you have more than one information for a cell. try to use a list column. 
+    * try to use it inside a tibble instead in a data.frame.
+    * when building the tibble from scratch with map, there is no nice functionality to turn the list to a tibble, but you really have to build every column from scratch indepentently...you can use transpose to try it, but at the moment there is no "safe" way to do this in short  
+    
+* convenient functions for missing values `map_chr("Species", .null = NA_character_)`
+  
+* use map inside mutate to manipulate list columns inside a tibble/data.frame
+* ...sometimes it's nice to use lookup tables inside map...
 
-when you have more than one information for a cell. try to use a list column. try to use it inside a tibble instead in a data.frame. when building the tibble from scratch with map, there is no nice functionality to turn the list to a tibble, but you really have to build every column from scratch indepentently...you can use transpose to try it, but at the moment there is no "safe" way to do this in short
+* collapse a character list column, so that each element is a paseted strings with an appropriate separator (use collapse) -> sth like  
+`mutate(new_col = paste(old_col, collapse = ", "))`
+* so the following should work:
+    * `map_chr(old_column, paste(.x, collapse ", "))`
+    * before pasting one can sort and so on of course.
+  
+* `walk` is like `map`, but you get nothing back (you get it back invisible, so you can do some side effect inside a pipe and continue the pipeline in the same go).
+* side effects = "printing to screen, plotting to gr dev, file manipulation (save, write, move, etc), system calls"
 
-convenient functions for missing values map_chr("Species", .null = NA_character_)
+* `map2` iterates over to lists -> map2(.x, .y, .f)
+* there are also
+    * walk2, map2_lgl, map2_int, map2_dbl, map2_chr
 
-use map inside mutate to manipulate list columns inside a tibble/data.frame
-...sometimes it's nice to use lookup tables inside map...
+* use map2 for writing, downloading etc different objects to different files...
+* use pmap, it is like map and map2, just for 3 or more arguments
+* use invoke map to apply many different functions to one argument
 
-collapse a character list column, so that each element is a paseted strings with an appropriate separator (use collapse) -> sth like
-mutate(new_col = paste(old_col, collapse = ", "))
-so the following should work:
-map_chr(old_column, paste(.x, collapse ", ")) # before pasting one can sort and so on of course.
+* many helpers for lists and functions..
+* safely takes a function and returns a function
+* transpose takes and returns a list...
+* the combination of the last two is very good for dealing with errorcatching...
 
-walk is like map, but you get nothing back (you get it back invisible, so you can do some side effect inside a pipe and continue the pipeline in the same go).
-side effects = "printing to screen, plotting to gr dev, file manipulation (save, write, move, etc), system calls"
-
-map2 iterates over to listts -> map2(.x, .y, .f)
-there are also
-walk2, map2_lgl, map2_int, map2_dbl, map2_chr
-
-use map2 for writing, downloading etc different objects to different files...
-use pmap, it is like map and map2, just for 3 or more arguments
-use invoke map to apply many different functions to one argument
-
-many helpers for lists and functions..
-safely takes a function and returns a function
-transpose takes and returns a list...
-the combination of the last two is very good for dealing with errorcatching...
-
-## talk4 What’s new with Shiny – Joe Cheng
+## talk 4 (24 min): What’s new with Shiny – Joe Cheng [link](https://www.rstudio.com/resources/videos/whats-new-with-shiny/)
 
 near future:
 - automated testing
@@ -147,7 +151,7 @@ limitations:
 - possibility for api to activate the interactive widgets
 - at the moment only data retrieving and no authentification at the moment
 
-## talk5 Database Best Practices – Jim Hester
+## talk 5 (22 min): Database Best Practices – Jim Hester [link](https://www.rstudio.com/resources/videos/database-best-practices/)
 
 - shows latest work at dbi, odbc, pool
 
@@ -197,7 +201,7 @@ rstudio server pro:
 - improved error messaging
 - kerberos support
 
-## talk6 Push-Button Publish in RStudio Connect – Jeff Allen
+## talk 6 (18 min): Push-Button Publish in RStudio Connect – Jeff Allen [link](https://www.rstudio.com/resources/videos/push-button-publish-in-rstudio-connect/)
 
 how to safe achievements?
 
@@ -236,7 +240,7 @@ next:
 - also hosted by rstudio
 - available on linux/virtual machine
 
-## talk 7: R and Spark – Javier Luraschi
+## talk 7 (23 min): R and Spark – Javier Luraschi [link](https://www.rstudio.com/resources/videos/r-and-spark/)
 - test locally, spark_install(), spark_connect(master = "local")
 - copy data to spark, use dplyr, ...
 - for modelling use sparkfunctions
@@ -249,8 +253,7 @@ next:
 - rstudio and shiny server pro certified with cloudera
 - config[[spark-shell-memory]] or so to give more memory then 500mb default or so
 
-
-## talk 8: Dynamic Shiny Interfaces – Bárbara Borges Ribeiro
+## talk 8 (24 min): Dynamic Shiny Interfaces – Bárbara Borges Ribeiro [link](https://www.rstudio.com/resources/videos/dynamic-shiny-interfaces/)
 - dynamic ui means that you return a plot, a summary or a table depending on the choose of a user
 - there are not too many use cases, since normally one works only on a table or only on a table...
 - should one use render or input ui
@@ -266,29 +269,48 @@ next:
 - there are also other ways for dynamic shiny, like conditional panels or any javascript stuff.
 - you should use renderUI, when reactive ui is enough.
 
-## talk9 Using Web APIs from R – Amanda Gadrow
-
+## talk 9 (24 min): Using Web APIs from R – Amanda Gadrow [link](https://www.rstudio.com/resources/videos/using-web-apis-from-r/)
 - some nice api packages:
  aws.s3, RGoogleAnalytics, acs, etc.
 - httr for requests (lots of functionality and very consistent)
 - xml2, jsonlite for parsing the response
 
-# goal
-# verb (get for example)
-# endpoint (url)
-# parameters (keyword, tag,... -> query)
+* goal
+    * verb (get for example)
+    * endpoint (url)
+    * parameters (keyword, tag,... -> query)
 
-usage:
-GET(), content(), fromJSON, stop_for_status() (in pipes to invest the header), writing helpers to parse sometimes, GET(page$next) to go through pages, possible to write this as a loop via
-while (!is.null(page$next))
+* usage:
+    * GET(), content(), fromJSON, stop_for_status() (in pipes to invest the header),
+    * writing helpers to parse sometimes, `GET(page$next)` to go through pages, possible to write this as a loop via while (!is.null(page$next))
 
-you can schedule api calls via rstudioconnect (or other ways),
-you can also run them regular from s3
+* you can schedule api calls via rstudioconnect (or other ways),
+* you can also run them regular from s3
 
-## talk11: Competitive Modeling of Outcomes for Prediction – Max Kuhn
+## talk 10 (25 min): Bookmarking Shiny State (Finally!) – Winston Chang [link](https://www.rstudio.com/resources/videos/bookmarking-shiny-state-finally/)
+
+- it is about sharing results of a shiny app. you can already share the app.
+but the results of an app couldn't be shared before bookmarkable state. You always had to write the way to the results.
+- requires shiny 0.14 (september 16). actual version (1/17) is 1.0.
+- ui has to be a function with argument request, you need to include bookmarkButton().
+Within shinyApp you can set enableBookmarking = "url" (you can set this to sth else also).
+- you should add a global.r to enable bookmarking
+- there is also the possibility to store the bookmarked page on the server via url ="server"
+- short url on server, url might be very long if not on server (this can lead to problems in (maybe older versions) of internet explorer).
+- cant save data on url encoded app, but you can if you host it on a server (which needs shiny server).
+- the url encoded version does not need shiny server.
+- bookmarking via the 3 lines mentioned above doesnt work for all shiny apps. sometimes you have to do more work.
+- specifically, it's easy, if the ouput just depends on the actual settings of the app and not on the past settings during the session ("partly input dependent applications").
+- also dependence on external data sources might need a little bit more work to bookmark.
+- to solve these issues, there are callbackfunctions: onBookmark() and onRestore(). details are explained in the talk...
+- documented on the shiny website -> bookmarkable state articles...
+- there might be ways to go back from the bookmarked app to the start of the app, even this is not intended at the moment...
+- for the "savin on a file with the shiny server way" it would be nice to give the file with the bookmarking to the user, but that is not possible, at least at the moment.
+
+## talk 11 (17 min): Competitive Modeling of Outcomes for Prediction – Max Kuhn [link](https://www.rstudio.com/resources/videos/competitive-modeling-of-outcomes-for-prediction/)
 - gain & lift...
 
-## talk12: Fun with htmlwidgets:3D interactive network visualization with threejs and R – Bryan Lewis
+## talk 12 (22min): Fun with htmlwidgets:3D interactive network visualization with threejs and R – Bryan Lewis [link](https://www.rstudio.com/resources/videos/interactive-network-visualization-with-threejs-and-r/)
 - introduced 2 years ago
 - now first major update
 - less to learn, less overhead ...
@@ -300,7 +322,7 @@ you can also run them regular from s3
 - 3d layouts
 - easy to play with really big graphs
 
-## talk 13 Writing Readable Code with Pipes – Bob Rudis
+## talk 13 (26 min): Writing Readable Code with Pipes – Bob Rudis [link](https://www.rstudio.com/resources/videos/writing-readable-code-with-pipes/)
 
 - 81 Packages on Cran that export the pipe operator
 - use ndjson for faster json parsing
@@ -308,7 +330,7 @@ you can also run them regular from s3
 - use stop_for_status() to look into the risky data stuff within the pipeline
 - use list.files %>% map_df
 
-## talk 14 (d1) Mapping in R with Leaflet – Bhaskar Karambelkar
+## talk 14 (20 min): Mapping in R with Leaflet – Bhaskar Karambelkar [link](https://www.rstudio.com/resources/videos/mapping-in-r-with-leaflet/)
 
 - based on version 0.7 of the leaflet javascript library.
 The most actual one is version 1.0
@@ -322,7 +344,7 @@ Adv. Concepts
 - u can use groups and players
 - huge mass of plugins, a whole ecosystem (like also d3 has).
 
--leafletProxy is used within shiny to add sth to already existing maps
+- leafletProxy is used within shiny to add sth to already existing maps
 - leaflet/adxxx have options arguments, which can be quite nice
 - you can use tiles from cartodb
 - addLayersControl("Dark", "Light")
@@ -340,7 +362,44 @@ Adv. Concepts
 - topojason for dynamic chloropleth maps is awesome...
 - for now everything thrown into leaflet has to be in lat/lng. however this is discussed and might be more flexible someday
 
-## talk16 Linking HTML Widgets with Crosstalk – Joe Cheng
+## talk 15 (19 min): Putting square pegs in round holes: Using list-cols in your dataframe – Jenny Bryan [link](https://www.rstudio.com/resources/videos/using-list-cols-in-your-dataframe/)
+- feels awkward, but you feel like a programming god in the end.
+- you need purr (by hadley and lionel henry)
+- works great with dplyr, broom, tibble,...
+- vectors don't have to be atomic, so you can also put lists into a data.frame
+- why?
+  - regex with sometimes more than one match
+  - some json or xml from an api which can be a nested list
+  - split apply combine problems (lapply,...)
+- in a data frame its cooler, since you think about filtering, arranging,...
+- you can use the existing toolkin (dplyr, ...)
+- keep multiple vectors intact and in sync
+- purrr replaces plyr in some way
+- how to index, inspect, compute, simplify these awkward structures
+- links for 2-3 examples are in the slides, but were cancelled from the talk, despite of time problems
+- -> api example
+- repursive package on github, which has some nice list examples to practice
+- usual to call list columns "stuff"
+- it is nicer to have a tibble instead of a data.frame, cause these can be easier created with lists, worked with and printed.
+- dont forget [ and [[ to figure out list elements, also the listviewer package has a nice widget to explore lists.
+- nice way to use map  variants in mutate to get some useful informations from a list columns
+- really nice example with a template for strings (in the talk)
+- use unnest() to go from list columns to data.frame without listcolums
+- use group_by %>% nest, to get a list data.frame within a pipeline
+- of course you can get list columns from list columns, depending on the operations you do...
+- if you have many models in your columns, just use the broom package (tidy, augment, ...)
+- inspections: View (sometimes), listviewer, str with list.level = 1, or list.level = 10 (for example) and maybe a new tool in Rstudio (not yet announced) can help to view list columns
+- work with listcolumns: use map in dplyr functions
+- when nested data.frames, when listed columns?
+  -> nested data.frames are special cases of list columns.
+  - they can replace ddply and are cool for split apply combine
+- when list colums, when group_by %>% do()
+  - jenny bryan thinks do() is complicated somehow and she just likes the other workflow more
+- might this be a possibility to reduce the complexity in many bioconductor packages easier with this approach?
+  - there are many ideas, but at the moment they dont seem to converge directly into
+  this direction. 
+
+## talk 16 (10 min): Linking HTML Widgets with Crosstalk – Joe Cheng [link](https://www.rstudio.com/resources/videos/linking-html-widgets-with-crosstalk/)
 - crosstalk is somehow the webbased extension of cranvas and/or ggobi (coordinated multiple views)
 - htmlwidgets is unopinionated, you have all freedom to access any js library, ...
 - three approaches to this: crosstalk, shiny, js (robservable)
@@ -350,7 +409,7 @@ data <- quakes;                           leaflet(data) %>% addMarkers; datatabl
 vs
 data <- SharedData$new(data); leaflet(data) %>% addMarkers; datatable(data)
 
-## talk 17: Text Mining the tidy Way – Julia Silge
+## talk 17 (23 min): Text Mining the tidy Way – Julia Silge [link](https://www.rstudio.com/resources/videos/text-mining-the-tidy-way/)
 - get a text, safe the line, use unnest_tokens(word, text) and get the format of one word per row.
 - stop words: tidy_books %>% dplyr::anti_join(stop_words)
 - counts: tidy_books %>% dplyr::cout(word, sort = TRUE)
@@ -363,7 +422,7 @@ data <- SharedData$new(data); leaflet(data) %>% addMarkers; datatable(data)
 - book: tidy text mining (includes case studies)
 - if you have different speakers, extend then to a column, before unnesting into the tidy format
 
-## talk18 TrelliscopeJS – Ryan Hafen
+## talk 18 (25 min): TrelliscopeJS – Ryan Hafen [link](https://www.rstudio.com/resources/videos/trelliscopejs/)
 - interactive displays of small multiples
 - based on the javascript package from the same author
 - facet_trelliscope fits in the ggplot workflow, but gives you pages of facets, which can lead to a better overview.
@@ -380,13 +439,13 @@ data <- SharedData$new(data); leaflet(data) %>% addMarkers; datatable(data)
 - fit in one markdown vis
 - has bookmarkable/sharable state
 
-## talk 19: Teaching Introductory Statistics Using the tidyverse via bookdown – Chester Ismay
+## talk 19 (19 min): Teaching Introductory Statistics Using the tidyverse via bookdown – Chester Ismay [link](https://www.rstudio.com/resources/videos/teaching-introductory-statistics-using-the-tidyverse/)
 
 - bringing R to different subjects in school
 - writing a book to lower the barrier to return to the language
 - writing a book to use the interactive and build up a formula paradigm
 
-## talk 20: Lightning Talks – User Submitted Talks
+## talk 20 (48 min): Lightning Talks – User Submitted Talks [link](https://www.rstudio.com/resources/videos/user-lightning-talks/)
 
 1. easyMake (package)
 - tries to build dependency graphs of analysis
@@ -445,11 +504,11 @@ use shiny, bash and feather. the latter plays nicely with python and julia
 - outperforms revolution r :D
 - easy to use, fast and you can test it on the webpage flashx.io
 
-## tallk21: Finding and Telling Stories with R – Andrew Flowers
+## talk21 (68 min): Finding and Telling Stories with R – Andrew Flowers [link](https://www.rstudio.com/resources/videos/finding-and-telling-stories-with-r/)
 subtitle "6 types of data stories and how to find them"
 - good journalism is good storytelling
 
-## talk 22 Advanced R Markdown Tutorial – Yihui Xie
+## talk 22 (114 min): Advanced R Markdown Tutorial – Yihui Xie [link](https://www.rstudio.com/resources/videos/advanced-r-markdown-tutorial/)
 - rmarkdown = knitr + pandoc
 - raw (outside of a chunk) latex or html will only work in the specific documenttype
 - converts to markdown and markdown passes arguments to pandoc
@@ -479,10 +538,41 @@ you can do this as a vector; css: [path1, path2, path3]
 5. reask the user why he wants sth. maybe his intention is strange and afterwards he doesnt  have the feature request anymore.
 6. be very open and engagng to users in the open source and pull requests. maybe others can contribute and work further on your package
 
-## talk 24 (d2) Opinionated Analysis Development Hilary Parker
+## talk 23 (131): Happy Git and Gihub for the useR Tutorial – Jenny Bryan [link](https://www.rstudio.com/resources/videos/happy-git-and-gihub-for-the-user-tutorial/)
+- uses allice barlet s slides for her tutorial a lot
+- r is mirrorerd on gh, by winson chang and cran also, because of gabor csardi
+- install git, configure, make sure rstudio can find it
+- there will be a git button in the gui
+- in rstudio you can do 90% of you r git work, like: make commits, look into your git history, look at gists, pull and push, access other branches than the master branch (but can't create other branches)
+- everything that was committed can be revisited
+- some git clients: rstudio (you can use command line for missing features, also mixing both at the same time), git, sourcetree (preferred by jenny brian), github desktop (is not recommended by jenny bryan), git cracking
+- rstudio creates gitignore by default
+- devtools can care abouto license stuff, so you don't have to specify these thins when creating a repo
+- you can use ssh, or https (github suggests this) [depends if you cached your credentials or used ssh keys]
+- always pull before work further or push (after committing), since it's nicer to prevent than to resolve merge conflicts.
+- git documentatin is really bad!!!
+- starlogs.net shows the beginning of a git history as a star wars episode start, with music and so on ...
+- ust github, lab or bucket, ...
+- when you have unresolvable merge conflicts with a remote repo, you can burn the local repo down and recreate it from remote.
+- keep_md: yes or output: markdown in the yml (or html_document to github_document, which changes rmd to md in the output, so also creates md on github when you push), lets you prevent github from rendering to html or rmarkdown.
+- rmarkdown rendered as html on github since around 1 year
+- edit, creations and also deletions have to be staged/committed
+- you can put yml on top of regular r files also, and create md files instead of r files on github.
+- github can render repository as a website, since december 16, you just need to have some thins as markdown and data as csv or tsv.
+  - you can create indexes in every hierarchy of a file. these can link to other places.
+  - just activate github pages within repository settings
+  - github pages is a jekyll powered service
+  - under source choose master branch and safe.
+  - github can show you differences in commited data analysis results, like diffs in data
+  or images.
+- github enterprise lets you run github on premise
+- oh shit git webpage is a nice page for common github issues
+- you have to pull always when there is sometihin on gh that you dont have. otherwise you cant push
+
+## talk 24 (25 min): Opinionated Analysis Development Hilary Parker [link](https://www.rstudio.com/resources/videos/opinionated-analysis-development/)
 ~ try to blame the process and not the person -> when errors occur, optimise the process
 
-## talk 25: What’s New with the IDE – Kevin Ushey
+## talk 25 (26 min): What’s New with the IDE – Kevin Ushey [link](https://www.rstudio.com/resources/videos/whats-new-with-the-ide/)
 - uses up to date version 1.0.136 in the talk
   - lots of autocompletion via tab, in different linces, in and outside of functions, fuzzily, for paths, ...
   - works also nice when implementing shiny stuff
@@ -507,7 +597,119 @@ you can do this as a vector; css: [path1, path2, path3]
 - can execute and render python (and many other) chunks (uses default engine, but you can set this path)
 - alt + shift + k for shortcuts
 
-## talk 31: Extending R with C++: A Brief Introduction to Rcpp – Dirk Eddelbuettel
+## talk 26 (22 min): Dashboards made easy – Sean Lopp [link](https://www.rstudio.com/resources/videos/dashboards-made-easy/)
+- two patterns that many db have in common: some imfo updates in real time, some only at specific timepoints
+- interactivity
+- 1. use parameterized dashboards (access via rmarkdown render function)
+- 2. bring it into a flexdashboard
+- also differences between different parameter results will be visible
+- 3. Dashboard + Shiny, enables you to include changes at runtime, and more user interactivity.
+- difference for shiny: now we are creating an app instead of an html. We need to host it.
+- cool thing about shiny and rmarkdown in flexdashboard: you don't have a separate ui and server function (internal this is a trick via rmarkdown::shiny_ui / rmarkdown::shiny_server)
+- therefore the flexdashboards are harder to debug and don't scale that well.
+- many of this will be fixed via runtime:shiny_prerendered, more upcoming in 2017
+- invalidateLater function uses userinput and also listens to api every n seconds.
+- demo: "weatehr updates every day, and everything is pulled in once a day"
+- in future: use shiny_prerendered for calling apis on a regular basis for some dashboard...
+
+## talk 27 (21 min): RStudio Server Pro Power Tools – Jonathan McPherson [link](https://www.rstudio.com/resources/videos/rstudio-server-pro-power-tools/)
+- big, complex product, many people use it because of one or two features and have no idea that you can do a bunch of cool stuff with it.
+- customizable login page (branding for company for example or message of the day,...)
+- highly available, load balancer, all peers, (in the background)
+- log stuff that goes to the r console, by r or by the user. configurable from the configuration file (r console = input). Data comes out in csv.
+- multiple versions of R.
+- choose project, when signing in
+- you can get notifications, if the server goes down. (some more health checking report functionality available).
+- customize session launch (environment stuff with clusters and so on [include it in a file...])
+- disabeling publishing and downloading
+- give power user profiles and give them more power (cpu)
+- use specific versions of r for a specific version of r
+- store new projects in a specific directory (for users). dont now if this isnt also available in desktop version.
+- stable mapping of users to load balancers nodes (same user to same computer [user hash based load balancer algo])
+- impersonate a user (take over their action) kind of superuser admin privileges,
+can do specific things, to help, troubleshoot,...
+- set defaults for new users (be careful with some options!)
+- log r session activity to analyze and security stuff...
+- immortal sessions (default is two hours per session). if you don't want a session to sleep, you can control this individually per user (set the value in their profile).
+- more than one session at the same time running (like multiple RStudio Desktops open).
+- See another sessions output (build into R initially via sink() function)
+- Graphite monitoring (really easy configurable) gives you lots of monitoring data and options
+- paired projects an code reviewing. shared sessions can be not optimal, but in RStudio Server Pro you have an option "follow their cursor". 
+
+## talk 28 (33 min): Making Websites with R – Yihui Xie [link](https://www.rstudio.com/resources/videos/making-websites-with-r/)
+* (a sneak peak of blogdown)
+    - early beta, test it!
+    - install from github
+    - based on static sidegenerator hugo
+    - really easy to get started.
+    - call new_site function in an empty director or empty rstudio project:
+install hugo automatically, downloads a hugo theme from github, loads some sample posts, starts a local webbrowser to preview.
+    - at hugowebsite is a quickstartguide with 12 steps
+    - for blogdown just ::new_site
+    - the output is build on top of bookdown
+    - so you can use many features like crossreferences
+    - you can create a project from rsutio: website useing blogdown
+    - on hugo documentation you can find a lot of themes and they are easy to change
+    - its not only for blogs, but also for general purpose websites
+- he thinks rmarkdown could be like the new php (but it might not be the best id)
+- he wanted to write everything in r, but actually it was possible via hugo to reuse a lot of functionality from there
+- hugo is written in "go" (via this, you could make r the new php, but might not make that much sense...)
+- funtcion install_hugo in blogdown package
+- it takes 1ms to render a page in hugo...but for blogdown, a bit of optimisation work has to be done.
+- many more static website generators available: jekyll (is very too slow)
+- hugo has and one can create different themes and templates. But lacks rmarkdown.
+so yihui added it.
+- structure:
+    - content
+    - themes
+    - static (js, css files, ...)
+    - public directory (ready to be published on servers, s3, github,... contains generated htmls,...)
+    - config.tml contains name, theme, ...., google analytics decision...
+- can be easier to use markdown or rmakdown. for first not pandoc is used, instead a go package called black friday, that somehow behaves a bit different.
+- helpers: new_site, install_hugo, install_theme, (default: hugo litium theme), serve_site rebuilds (calls surfside) and shows preview however, there is an add in "surf side" shown in rstudio,new_post (the only funtion that you use more than once, whenever you make a new post...).
+- output: blogdown::html_page , wrapped from bookdown (gives a lot of these functionality), tables, citations, titles, ...
+- two addins: view new site and new post
+- more general than rmarkdown website mode
+- you can enable cache
+- supports rss feeds -> rbloggers :)
+- hugo has everything we want, except rmarkdown...before blogdown...
+- if a theme does not work with blogdown, it might afford one or small simple tweaks, to make it work.
+
+## talk 29 (120 min): Customizing and Extending R Markdown – Yihui Xie [link](https://www.rstudio.com/resources/videos/customizing-extending-r-markdown/)
+- most important field in yml is "output"
+- before customizing, check out the available options in the documentation or from the gear button within rstudio
+- toc options, css, ...
+- ouput somehow influences the possibilities regarding knitr options, pandoc options, pre and postprocessing of html stuff (look at yihuis other talk to get the details of this), other options
+- can be created via rmarkdown::output_format() function.
+- important argument is baseformat (for example = html_document, which enables you to override some default html format), if you want to build up on some available format. otherwise you can ignore this argument.
+- an output format function returns a list (including all options of the format)
+- the output looks different to some pandoc outputs, since a lot of default cusomizing via integration of other stuff was added by yihui
+- use developer tools from your browser, to see how you can customize via css for example and the save these in context of your document and pass it to the css option in the yaml.
+- you can use some pandoc template to build up another template, which makes you much more flexible. read the pandoc documentation minimum once before you do, to know what pandoc options are available.
+- some examples of extensions are: bookdown, xaringan (remark.js translation to r [for cooler slides]), flexdashboard, tufte, rticles, prettydoc, blogdown
+
+## talk 30 (24 min): Understand Code Performance with the profiler – Winston Chang [link](https://www.rstudio.com/resources/videos/understand-code-performance-with-the-profiler/)
+- hot about how to make r faster
+- about why is my code slow
+- example of normalization via apply and subtraction of means
+  - benchmark with system.time
+  - another way of benchmarking is Rprof() some code Rprof(NULL),
+     - every 20 milliseconds you get a snapshot of the call tree
+- to get a better resolution use profvis (on cran) use profvis({some code})
+  or use the rstudio ide select some lines and select profile -> profile selected lines
+  from the menu
+  -> you get different interactive visualisations/apps/widgets which visualise the timeings the call stack and even the garbage collections during the execution
+- you can use this like microbenchmark:
+  - profvis({alternative 1
+                  alternative 2
+                  alternative 3})
+- shows some interesting details from the implementation as example -> detail: data.frame creation is relatively slow. he solved the vectors in a list instead of creating a data.frame, which gave good speedup
+- you can publish your profvis outputs to rstudioconnect or rpubs
+- or you can safe your output also (it is an html file with extension rprofvis [for rstudio]) but you can reextend it to .html to open it in a browser
+- you can profile a shiny app via profile and saving the ouput to disk and looking at it afterwards.
+- you can source within profvis, to profile stuff from separate files easily
+
+## talk 31 (28 min): Extending R with C++: A Brief Introduction to Rcpp – Dirk Eddelbuettel [link](https://www.rstudio.com/resources/videos/extending-r-with-c-a-brief-introduction-to-rcpp/)
 - computer age statistical inference by hastie and efron (book recommendation)
 - in this state of the art book, everything is done with r :)
 - extendig r by j. m. chambers, opening in chapter 1:
@@ -531,20 +733,55 @@ you can do this as a vector; css: [path1, path2, path3]
 - many rcpp versions of ml algorithms available
 - gallery rcpp with 100 examples, + book, + website
 
-## talk 33 (d2) R’s Role in Data Science – Joseph Rickert
+## talk 32 (21 min): R Notebook Workflows – Jonathan McPherson [link](https://www.rstudio.com/resources/videos/r-notebook-workflows/)
+- Jonathan McPherson is the "leader of the IDE"
+- nb is just rmarkdown, but you can execute the chunks individually (one at a time)
+- outputs appear in the document and are saved with it.
+- there is already an rstudio webinar with an introduction
+- there is an outline view
+- cmd + alt + shift + j pick and select a section quickly
+- 2 hidden cmds, you can bind keyboard sequences to run between two chunks
+- you can click on the navigation bar and land in the chunk that is currently running
+- there is a shortcut to collapse all codechunks at once
+- the notebookchunks may not be reproducible, because they can have been run in any order. workarounds:
+  - knit from a fresh rstudio version
+  - before you run a chunk, run all chunks before it
+- when chunks are run, the output lands into the chache. When you safe a notebook, the cache is combined with the document. you get 1. the cache, 2. the document, 3. the underlying code (all three in one notebook)
+- it is an html file (selfcontained)
+- you can render to a different outputformat
+- publish to another format.
+  - nb can be notebooks and html
+  - nb can be notebooks and pdf
+  - nb can be notebooks and github..., ...
+- one of the formats can be run iterative and the other format can be guaranted to be reproducible
+- publish and collaborate from rstudio connect
+- when you open an old notebook within rstudio, you can get the saved output cache within your rstudio session.
+- via download rmd you can get the code from the notebook.
+- version control: 2 different options.
+  1. put notebook into gitignore and only version control the rmarkdown. this ensures reproducibility.
+  2. check the nb in version control. then input and output are versioned together.
+  sometimes its nice, since not everything has to be executed again.
+  If you do this, be aware that this can give conflicts in the output, which can't be
+  resolved. This gives priority to the collaborators changes on your original work.
+ - the r code in the notebook depends on version of r and packages. how to resolve this is still not clear, but for now it is recommended to use a packrat snapshot before sharing. Collaborator has to unbundle the (before bundled) nb file
+- if you don't want that a chunk is run be a collaborateur by default, you can just set eval = FALSE, but of course this chunk can still be ran manually.
 
-distinction of data engineering vs data science
+## talk 33 (18 min): R’s Role in Data Science – Joseph Rickert [link](https://www.rstudio.com/resources/videos/rs-role-in-data-science/)
+
+* distinction of data engineering vs data science: 
 "most of the time engineers know what they are doing"
 
-ds:bring scientific method into engineering
+* ds:bring scientific method into engineering
 ...
 
-## Talk 34 (d2): All Things R and RStudio, Q & A with J.J. Allaire, Hadley Wickham & Joe Cheng, Moderator: Joseph Rickert
+## Talk 34 (66 min): All Things R and RStudio, Q & A with J.J. Allaire, Hadley Wickham & Joe Cheng, Moderator: Joseph Rickert [link](https://www.rstudio.com/resources/videos/all-things-r-and-rstudio/)
 
-upcoming:
-interface to tensorflow deep learning and machine learning
-thoughts about default parallelization...problems about api, because parallelisation ways differ so much on different os'ses.
+**upcoming:** 
 
-Needed in base R:
-64bit integers
-out of memory vectors (pointers)
+* interface to tensorflow deep learning and machine learning
+* thoughts about default parallelization...problems about api, because parallelisation ways differ so much on different os'ses.
+  
+**Needed in base R:**  
+
+* 64bit integers
+* out of memory vectors (pointers)
