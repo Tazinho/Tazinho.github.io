@@ -1,0 +1,30 @@
+---
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+---
+
+- lightning talks 3.01
+      - bigstatsr package (out of memory stats on big matrix objects)
+      - lightning talks 3.02
+- lightning talks 2.02
+      - graphiT (nette Idee eine Shiny GGplot GUI zu entwickeln)
+        https://analytics.huma-num.fr/Lise.Vaudor/graphiT/
+      - heatmaply: Tal mentions viridis colourscales in his talk :)
+      - R Tags, widget to load spreadsheet data (looks nice)
+      - Seans packrat talk. Passive approach überlegen und generell
+        packrat::set_opts(use.cache = TRUE) evtl. in Zukunft nutzen.
+- lightning talks 4.02
+      - erster talk western union -> elena zeigen
+      - interessanter workflow für models in production (vestas)
+      - idee data labeln als spiel, um einfacher labels zu bekommen
+      - merkwürdiger aber interessanter talk über rkdb, das anscheinend schneller als 
+        data. table ist!?
+- R and Haskell (Combining best of both worlds)
+- The R6 class system
+- efficient r
+    - matrix objekt statt data.frame beim subsetten
+      viel schneller sein.
+    - evtl. einen Teil in cmpfun schubsen :)
+    - aufpassen bei bind rows, wahrscheinlich nicht wichtig

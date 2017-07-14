@@ -8,6 +8,8 @@ navbar:
       href: about.html
     - text: "rstudioconf"
       href: rstudio_conf_notes.html
+    - text: "user2017"
+      href: user2017.html
 output:
   html_document:
     theme: cosmo
