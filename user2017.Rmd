@@ -54,3 +54,16 @@ output:
     - tidytext package
     - 1 token (word), no punctuation, lowercase
 - ReinforcementLearning: A package for replicating human behavior in R
+- brms: Bayesian Multilevel Models using Stan
+    - ohne multilevel (mixed) models bekommen wir zu enge konfidenzbänder (hier)
+      um die koeffizienten
+    - why bayesian? one reason is: man bekommt die gesammte posterior distribution
+      der koeffizienten, nicht nur die punktschätzer (+ standardabweichung).
+        - bei standardnormalverteilung der parameter ist das kein großer gewinn, aber bei
+          schiefer verteilung ist das schon ein großer unterschied.
+        - nachteil: mehr rechenaufwand. (wegen kompilierung meist mindestens 30 Sek)
+- papr: Tinder for pre-prints, a Shiny Application for collecting gut-reactions to…
+    - basierend auf ganz interessanten shiny geschichten
+- Teaching psychometrics and analysing educational tests with ShinyItemAnalysis
+- Rcpp: From Simple Examples to Machine Learning
+- The growing popularity of R in data journalism
