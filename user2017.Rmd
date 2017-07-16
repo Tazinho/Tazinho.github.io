@@ -28,3 +28,29 @@ output:
       viel schneller sein.
     - evtl. einen Teil in cmpfun schubsen :)
     - aufpassen bei bind rows, wahrscheinlich nicht wichtig
+- sponsor talk mango solutions
+- Sponsor talk Rconsortium
+- Sponsor talk RStudio
+- Sponsor talk Data Camp
+- Morphological Analysis with R
+    - "an ordered way of looking at things"
+    - ein htmlwidget um ergebnisse von verschiedenen kombinationen von features
+      direkt zu highlighten
+- Closing
+- Community-based learning and knowledge sharing
+- Navigating the R package universe
+- Exploring and presenting maps with **tmap**
+    - "ggplot for maps"
+    - easy to switch from static to interactive
+    - interactive mode based on leaflet and mapview
+- We R What We Ask: The Landscape of R Users on Stack Overflow
+- Maps are data, so why plot data on a map?
+    - packages: osmdata/osmplotr
+    - get data from openstreetmap
+    - extract/plot/highlight data from open street map
+    - interactive (zooming + more?)
+- Sponsor Talk - Microsoft
+- Text mining, the tidy way
+    - tidytext package
+    - 1 token (word), no punctuation, lowercase
+- ReinforcementLearning: A package for replicating human behavior in R
