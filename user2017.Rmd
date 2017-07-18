@@ -44,7 +44,7 @@ output:
     - easy to switch from static to interactive
     - interactive mode based on leaflet and mapview
 - We R What We Ask: The Landscape of R Users on Stack Overflow
-- Maps are data, so why plot data on a map?
+- Maps are data, so why plot data on a map? [NICE-TOP]
     - packages: osmdata/osmplotr
     - get data from openstreetmap
     - extract/plot/highlight data from open street map
@@ -54,7 +54,7 @@ output:
     - tidytext package
     - 1 token (word), no punctuation, lowercase
 - ReinforcementLearning: A package for replicating human behavior in R
-- brms: Bayesian Multilevel Models using Stan
+- brms: Bayesian Multilevel Models using Stan [NICE-TOP]
     - ohne multilevel (mixed) models bekommen wir zu enge konfidenzbänder (hier)
       um die koeffizienten
     - why bayesian? one reason is: man bekommt die gesammte posterior distribution
@@ -67,3 +67,19 @@ output:
 - Teaching psychometrics and analysing educational tests with ShinyItemAnalysis
 - Rcpp: From Simple Examples to Machine Learning
 - The growing popularity of R in data journalism
+- countreg: Tools for count data regression
+  - usually poisson or negative binomial (when 60-80% zeros, then often zero inflation or
+  hurdal models or other options mentioned)
+- Modules in R
+  - managing dependencies between different r scripts
+  - options for organising functions in larger codebases
+  - module examples: scripts, modules, packages
+  - basic idea is that you can put functions into modules that are organised as a lower
+  hierarchy than packages.
+  - another cool idea is the import package where you can just load a function from a package
+  instead of the whole pkg via library
+- KEYNOTE: R tools for the analysis of complex heterogeneous data
+- The analysis of R learning styles with R PLENARY [NICE]
+- ompr: an alternative way to model mixed-integer linear programs [TOP]
+  - easy interface for optimisation
+- Interfacing Google's spherical geometry library (S2) for spatial data in R
