@@ -21,6 +21,9 @@ output:
       - idee data labeln als spiel, um einfacher labels zu bekommen
       - merkwürdiger aber interessanter talk über rkdb, das anscheinend schneller als 
         data. table ist!?
+- lightning talks 2.01
+- lightning talks 3.02
+- lightning talks 4.01
 - R and Haskell (Combining best of both worlds)
 - The R6 class system
 - efficient r
@@ -68,18 +71,94 @@ output:
 - Rcpp: From Simple Examples to Machine Learning
 - The growing popularity of R in data journalism
 - countreg: Tools for count data regression
-  - usually poisson or negative binomial (when 60-80% zeros, then often zero inflation or
-  hurdal models or other options mentioned)
+    - usually poisson or negative binomial (when 60-80% zeros, then often zero inflation or
+    hurdal models or other options mentioned)
 - Modules in R
-  - managing dependencies between different r scripts
-  - options for organising functions in larger codebases
-  - module examples: scripts, modules, packages
-  - basic idea is that you can put functions into modules that are organised as a lower
-  hierarchy than packages.
-  - another cool idea is the import package where you can just load a function from a package
-  instead of the whole pkg via library
+    - managing dependencies between different r scripts
+    - options for organising functions in larger codebases
+    - module examples: scripts, modules, packages
+    - basic idea is that you can put functions into modules that are organised as a lower
+    hierarchy than packages.
+    - another cool idea is the import package where you can just load a function from a package
+    instead of the whole pkg via library
 - KEYNOTE: R tools for the analysis of complex heterogeneous data
 - The analysis of R learning styles with R PLENARY [NICE]
 - ompr: an alternative way to model mixed-integer linear programs [TOP]
-  - easy interface for optimisation
+    - easy interface for optimisation
 - Interfacing Google's spherical geometry library (S2) for spatial data in R
+- Modelling the environment in R: from small-scale to global applications
+    - solving ODE's and PDE's in R
+- Show Me Your Model: tools for visualisation of statistical models [NICE]
+    - basically a quick tour through model vis packages.
+    - statement: create plots, when you intend to answer a specific question about your model.
+- Sports Betting and R: How R is changing the sports betting world [NICE]
+    - really cool, if one wants to understand the way betting companies work
+    - also interesting from an infrastructure point of view.
+- Neural Embeddings and NLP with R and Spark
+    - nice idea: neural embeddings: representation of word as vector: "chocolate" = (0.1, 0.7, ...). So words can be compared.
+    - interesting. should watch again, when I work on NLP-problems.
+- jamovi: a spreadsheet for R
+    - nettes tool für analysen in spreadsheets [NICE]. Entwicklung sollte man definitiv
+    in nochmal checken in einiger Zeit
+- mapedit - interactive manipulation of spatial objects
+    - addition on leaflet and/or mapview!?
+    - enables you editing/drawing, updating, reshaping, selecting, deleting,...
+    interactively and saving back to the r session
+    - implemented as shiny module
+    - currently works well with sf-pkg
+- Package ggiraph: a ggplot2 Extension for Interactive Graphics [NICE]
+    - give a tooltip, id and click events to a ggplot object.
+    - also good to use with shiny
+    - supercool bonus example. sound as clickevent on a graphic
+- Scraping data with rvest and purrr
+    - standard selector gadget showcase on a fake money movie rating homepage
+    - based on secure information in this example you know how the moving average
+    of an artist value changes and can buy his fantasy shares...
+    - also shows scraping and gaming strategy for fantasy football with real money prizes
+- bradio: Add data music widgets to your business intelligence dashboards
+    - visualisations like numbers, tables, piecharts ... are not the only way to consume
+    numbers and data. we could also use other senses, like ... ears, to listen to data music
+    traditional pkg: tuneR. Shows a little better (?) approach. Also some other tools exist within R.
+    In genreal: 3 approaches, but all have difficulties. Slow, hard to configure, no concurrency.
+    solution: bradio, a shiny widget to insert music widgets into bi-dashboards.
+    - idea: think about using datamusic to consume data and get insights.
+- moodler: A new R package to easily fetch data from Moodle 
+    - moodle is a learning platform
+    - it is modular and you can build courses there
+    - community driven, lots of functionality via plugins
+    - database + filestorage... onlinux: mysql, php
+    - logs, discussion forums, quizzes information with timestamps with the database
+    - after db connection via dbi etc. you can explore moodle's database via
+    moodler pkg
+- Transformation Forests (theoretical, but NICE in the end)
+    - method where within the splits not only the mean, but also higher moments, like 
+    variance etc are taken into account and distributions for each leaf of a try are the result
+    - nice properties: will end in prediction intervals and almost all stuff that you
+    get by classical likelihood based models.
+    - with several trees (forest) it's easier to view the variable importance.
+    - nice visualisation: partial deciles
+    - currently not implemented in R.
+- Daff: diff, patch and merge for data.frames
+    - can show any difference in data frames
+    - diffobj-pkd for other r objects than data frames
+- Automatically archiving reproducible studies with Docker
+    - nice intro into docker
+    - dockerfile -> use command line to create an image -> build dockerfile: create a container
+    -> u can do whatever you want with your container
+    - usecase: one project/customer/whatever per container
+    - easy to integrate into production
+    - rocker images for different r versions or rstudio, easy to setup
+    - also bioconductor provides a lot of images.
+    - own pkg: containerit: creates a container for the current project, from within R.
+    - can also just create a container for a specific script
+    - related to packrat, checkpoint, switchr/Granbase, harbor etc.
+    - also related to other container systems apart from docker
+- Updates to the Documentation System for R [TOP]
+    - complete update. everything that already exists, but also more.
+    - as r objects. readable and so on
+    - big design principles
+    - more ways to document and more ways to read documentation
+    - parsing, translating between languages etc.
+    - you can create functions, data frames etc.
+    - in progress
+    - pkgnames: parsetools, documentation
