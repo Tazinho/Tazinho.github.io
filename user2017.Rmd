@@ -162,3 +162,53 @@ output:
     - you can create functions, data frames etc.
     - in progress
     - pkgnames: parsetools, documentation
+- Computer Vision and Image Recognition algorithms for [TOP]
+    - lots of image pkgs already. some also very domain specific. some interfacing.
+    - also deep learning.
+    - imagecornerdetectionf9: gets corners of greyscale images
+    - image.cannyedges: removes noise, rms gradients, keeps edges
+    - image.lineSegmentDetector: finds lines of i.e. buildings within pictures
+    - image.ContourDetector
+    - use magick pkg to greyscale a pgm picture
+    - image.dlib
+    - image.darknet interface to deep learning. detects positions of certain objects in pictures
+- R4ML: A Scalable R for Machine Learning
+    - r package for data mining on spark
+- Implementing Predictive Analytics projects in corporate environments
+- Show me the errors you didn't look for
+    - idea: check every variable and make tables, plots, notes to handout and recommunicate with the client,
+    to ask them. Does this makes sense? How is this ment? And so on.
+    - pkg contains functions/framework to contro specific data types for specific common problems
+- implyr: A dplyr Backend for a Apache Impala
+    - sparklyr partnership with rstudio
+    - cloudera data science workbench
+    - implyr: layer between dplyr and impala
+    - 10 rules for creating a dplyr SQL backend
+        1. determine if it is necessary. Maybe you just can make a small contribution to dbplyr
+        1. persist. You will have to ask embarassing questions.
+        1. know the database inside and out.
+        1. know dbplyr inside and out. Will help you to troubleshoot problems.
+        Fork the repository from github. Set breakpoints to understand everything.
+        1. stay idiomatic / stay tidy. Try to use the conventions, which are already there
+        1. Create automated tests. DB tests need to be skippe, when send to CRAN, since they won't have access to the database.
+        1. run a dedicated database instance. Just for tests. Try to use travis CI. But they shouldn't need to always install a db. Instead give them access to your db hosted in the cloud.
+        1. Allow different ways of connecting. JDBC vs ODBC
+        1. Evolve with dbplyr (there might be breaking changes)
+        1. Evolve with the database (also changes in the database might happen)
+- Rc2: an Environment for Running R and Spark in Docker Containers
+    - idea: orchestra all components, which could be in dockercontainers, via cubernetes
+    - RC^2 helps to spin up these containers in the right order and so on
+    - nice to manage containers and logs for each one during a session. also have an own gui.
+- The renjin package: Painless Just-in-time Compilation for High Performance R [NICE]
+    - an alternative interpreter built on java vm. (optimized and easy to integr. in other systems like DBs and java base systems like flink, ...). AST-interpreter (substitute(x)), Vector pipeliner (sum(vector)), JIT loop compiler (compiles big for loobs jit so it's faster). Vector pipeliner sees independent calculations and can automatically parallelize
+    - one goal: being compatible to gnuR. So make it possible to exchange interpreters on the fly.
+    - idea: maybe for now just switch to renjin where you have bottlenecks in your code.
+    - install: source("http://renjin.org/install.R"). Then library(renjin) -> renjin({}).
+    - optimizes loops only, when there is not used substitute, deparse, eval, source. otherwise you'll get a warning.
+    - lastly you can use it instead of writing c++ code.
+- R-based computing with big data on disk [NICE]
+    - matter pkg
+    - introduce s4 classes matter and atom. 
+    - objects are just parts of datastructures on disk.
+    - on bigger data matter becomes faster and less memory hungry than ff- and bigmemory-pkgs
+- Bayesian social network analysis with Bergm

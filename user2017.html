@@ -11,7 +11,7 @@
 
 
 
-<title></title>
+<title>user2017.utf8</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -20,8 +20,8 @@
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-1.1/textmate.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -30,10 +30,12 @@
   }
 </style>
 <script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
 }
 </script>
 
@@ -187,6 +189,9 @@ $(document).ready(function () {
 <li>
   <a href="user2017.html">user2017</a>
 </li>
+<li>
+  <a href="h20World2017.html">H2OWorld2017</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -204,25 +209,9 @@ $(document).ready(function () {
 
 
 <ul>
-<li>lightning talks 3.01
-<ul>
-<li>bigstatsr package (out of memory stats on big matrix objects)</li>
-<li>lightning talks 3.02</li>
-</ul></li>
-<li>lightning talks 2.02
-<ul>
-<li>graphiT (nette Idee eine Shiny GGplot GUI zu entwickeln) <a href="https://analytics.huma-num.fr/Lise.Vaudor/graphiT/" class="uri">https://analytics.huma-num.fr/Lise.Vaudor/graphiT/</a></li>
-<li>heatmaply: Tal mentions viridis colourscales in his talk :)</li>
-<li>R Tags, widget to load spreadsheet data (looks nice)</li>
-<li>Seans packrat talk. Passive approach überlegen und generell packrat::set_opts(use.cache = TRUE) evtl. in Zukunft nutzen.</li>
-</ul></li>
-<li>lightning talks 4.02
-<ul>
-<li>erster talk western union -&gt; elena zeigen</li>
-<li>interessanter workflow für models in production (vestas)</li>
-<li>idee data labeln als spiel, um einfacher labels zu bekommen</li>
-<li>merkwürdiger aber interessanter talk über rkdb, das anscheinend schneller als data. table ist!?</li>
-</ul></li>
+<li>lightning talks 3.01 - bigstatsr package (out of memory stats on big matrix objects) - lightning talks 3.02</li>
+<li>lightning talks 2.02 - graphiT (nette Idee eine Shiny GGplot GUI zu entwickeln) <a href="https://analytics.huma-num.fr/Lise.Vaudor/graphiT/" class="uri">https://analytics.huma-num.fr/Lise.Vaudor/graphiT/</a> - heatmaply: Tal mentions viridis colourscales in his talk :) - R Tags, widget to load spreadsheet data (looks nice) - Seans packrat talk. Passive approach überlegen und generell packrat::set_opts(use.cache = TRUE) evtl. in Zukunft nutzen.</li>
+<li>lightning talks 4.02 - erster talk western union -&gt; elena zeigen - interessanter workflow für models in production (vestas) - idee data labeln als spiel, um einfacher labels zu bekommen - merkwürdiger aber interessanter talk über rkdb, das anscheinend schneller als data. table ist!?</li>
 <li>lightning talks 2.01</li>
 <li>lightning talks 3.02</li>
 <li>lightning talks 4.01</li>
@@ -395,6 +384,70 @@ $(document).ready(function () {
 <li>in progress</li>
 <li>pkgnames: parsetools, documentation</li>
 </ul></li>
+<li>Computer Vision and Image Recognition algorithms for [TOP]
+<ul>
+<li>lots of image pkgs already. some also very domain specific. some interfacing.</li>
+<li>also deep learning.</li>
+<li>imagecornerdetectionf9: gets corners of greyscale images</li>
+<li>image.cannyedges: removes noise, rms gradients, keeps edges</li>
+<li>image.lineSegmentDetector: finds lines of i.e. buildings within pictures</li>
+<li>image.ContourDetector</li>
+<li>use magick pkg to greyscale a pgm picture</li>
+<li>image.dlib</li>
+<li>image.darknet interface to deep learning. detects positions of certain objects in pictures</li>
+</ul></li>
+<li>R4ML: A Scalable R for Machine Learning
+<ul>
+<li>r package for data mining on spark</li>
+</ul></li>
+<li>Implementing Predictive Analytics projects in corporate environments</li>
+<li>Show me the errors you didn’t look for
+<ul>
+<li>idea: check every variable and make tables, plots, notes to handout and recommunicate with the client, to ask them. Does this makes sense? How is this ment? And so on.</li>
+<li>pkg contains functions/framework to contro specific data types for specific common problems</li>
+</ul></li>
+<li>implyr: A dplyr Backend for a Apache Impala
+<ul>
+<li>sparklyr partnership with rstudio</li>
+<li>cloudera data science workbench</li>
+<li>implyr: layer between dplyr and impala</li>
+<li>10 rules for creating a dplyr SQL backend
+<ol type="1">
+<li>determine if it is necessary. Maybe you just can make a small contribution to dbplyr</li>
+<li>persist. You will have to ask embarassing questions.</li>
+<li>know the database inside and out.</li>
+<li>know dbplyr inside and out. Will help you to troubleshoot problems. Fork the repository from github. Set breakpoints to understand everything.</li>
+<li>stay idiomatic / stay tidy. Try to use the conventions, which are already there</li>
+<li>Create automated tests. DB tests need to be skippe, when send to CRAN, since they won’t have access to the database.</li>
+<li>run a dedicated database instance. Just for tests. Try to use travis CI. But they shouldn’t need to always install a db. Instead give them access to your db hosted in the cloud.</li>
+<li>Allow different ways of connecting. JDBC vs ODBC</li>
+<li>Evolve with dbplyr (there might be breaking changes)</li>
+<li>Evolve with the database (also changes in the database might happen)</li>
+</ol></li>
+</ul></li>
+<li>Rc2: an Environment for Running R and Spark in Docker Containers
+<ul>
+<li>idea: orchestra all components, which could be in dockercontainers, via cubernetes</li>
+<li>RC^2 helps to spin up these containers in the right order and so on</li>
+<li>nice to manage containers and logs for each one during a session. also have an own gui.</li>
+</ul></li>
+<li>The renjin package: Painless Just-in-time Compilation for High Performance R [NICE]
+<ul>
+<li>an alternative interpreter built on java vm. (optimized and easy to integr. in other systems like DBs and java base systems like flink, …). AST-interpreter (substitute(x)), Vector pipeliner (sum(vector)), JIT loop compiler (compiles big for loobs jit so it’s faster). Vector pipeliner sees independent calculations and can automatically parallelize</li>
+<li>one goal: being compatible to gnuR. So make it possible to exchange interpreters on the fly.</li>
+<li>idea: maybe for now just switch to renjin where you have bottlenecks in your code.</li>
+<li>install: source(“<a href="http://renjin.org/install.R" class="uri">http://renjin.org/install.R</a>”). Then library(renjin) -&gt; renjin({}).</li>
+<li>optimizes loops only, when there is not used substitute, deparse, eval, source. otherwise you’ll get a warning.</li>
+<li>lastly you can use it instead of writing c++ code.</li>
+</ul></li>
+<li>R-based computing with big data on disk [NICE]
+<ul>
+<li>matter pkg</li>
+<li>introduce s4 classes matter and atom.</li>
+<li>objects are just parts of datastructures on disk.</li>
+<li>on bigger data matter becomes faster and less memory hungry than ff- and bigmemory-pkgs</li>
+</ul></li>
+<li>Bayesian social network analysis with Bergm</li>
 </ul>
 
 

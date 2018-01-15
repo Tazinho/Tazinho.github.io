@@ -10,6 +10,8 @@ navbar:
       href: rstudio_conf_notes.html
     - text: "user2017"
       href: user2017.html
+    - text: "H2OWorld2017"
+      href: h20World2017.html
 output:
   html_document:
     theme: cosmo

@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>h20World2017.utf8</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">My Website</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+<li>
+  <a href="rstudio_conf_notes.html">rstudioconf</a>
+</li>
+<li>
+  <a href="user2017.html">user2017</a>
+</li>
+<li>
+  <a href="h20World2017.html">H2OWorld2017</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+<div id="TOC">
+<ul>
+<li><a href="#democratizing-intelligence---sri-ambati-ceo-co-founder-h2o.ai-54.50">Democratizing Intelligence - Sri Ambati, CEO &amp; Co-Founder, H2O.ai (54.50)</a></li>
+<li><a href="#fireside-chat-with-jeff-herbst-vp-business-development-nvidia-4756">Fireside Chat with Jeff Herbst, VP Business Development, NVIDIA 47:56</a></li>
+<li><a href="#convex-optimization---stephen-boyd-professor-stanford-university-5106">Convex Optimization - Stephen Boyd, Professor, Stanford University 51:06</a></li>
+<li><a href="#h2o-world-2017-keynote---jim-mchugh-vp-gm-of-data-center-nvidia-2022">H2O World 2017 Keynote - Jim McHugh, VP &amp; GM of Data Center, NVIDIA 20:22</a></li>
+<li><a href="#scaling-machine-learning-at-booking.com-with-h2o-sparkling-water-2954">Scaling Machine Learning at Booking.com with H2O Sparkling Water 29:54</a></li>
+<li><a href="#driverless-ai---introduction-and-a-look-under-the-hood-hands-on-lab---arno-candel-cto-h2o.ai-5845">Driverless AI - Introduction and a Look Under the Hood + Hands-On Lab - Arno Candel, CTO, H2O.ai 58:45</a></li>
+<li><a href="#deep-learning-for-the-enterprise---sumit-gupta-ibm-cognitive-systems-2504">Deep Learning for the Enterprise - Sumit Gupta, IBM Cognitive Systems 25:04</a></li>
+<li><a href="#intro-to-automl-hands-on-lab---erin-ledell-machine-learning-scientist-h2o.ai-5819">Intro to AutoML + Hands-on Lab - Erin LeDell, Machine Learning Scientist, H2O.ai 58:19</a></li>
+<li><a href="#kaggle-grandmaster-panel-4827">Kaggle Grandmaster Panel 48:27</a></li>
+<li><a href="#talk-by-matt-dowle-main-author-of-the-data.table-package-in-r-3826">Talk by Matt Dowle, Main Author of the data.table package in R 38:26</a></li>
+<li><a href="#distributed-learning-of-rule-ensemble-models-with-h2o---giovanni-seni-amazons-a9-2949">Distributed Learning of Rule Ensemble Models with H2O - Giovanni Seni, Amazon’s A9 29:49</a></li>
+<li><a href="#leakage-in-meta-modeling-and-its-connection-to-hcc-target-encoding---mathias-muller-h2o.ai-2926">Leakage in Meta Modeling And Its Connection to HCC Target-Encoding - Mathias Müller, H2O.ai 29:26</a></li>
+<li><a href="#how-to-design-deep-networks-to-process-images-on-mobile-devices---sk-reddy-digitalist-group-2943">How to design deep networks to process images on mobile devices - SK Reddy, Digitalist Group 29:43</a></li>
+<li><a href="#design-patterns-for-machine-learning-in-production---sergei-izrailev-beeswaxio-2558">Design Patterns for Machine Learning in Production - Sergei Izrailev, BeeswaxIO 25:58</a></li>
+<li><a href="#mapd-h2o.ai-gpu-powered-visualization-data-analysis-and-machine-learning-3005">MapD &amp; H2O.ai: GPU-powered Visualization, Data Analysis and Machine Learning 30:05</a></li>
+<li><a href="#automatic-visualization---leland-wilkinson-chief-scientist-h2o.ai-2922">Automatic Visualization - Leland Wilkinson, Chief Scientist, H2O.ai 29:22</a></li>
+<li><a href="#harnessing-ai-to-create-a-trillion-dollar-asset-class---john-mercer-ledger-investing-2536">Harnessing AI to Create a Trillion Dollar Asset Class - John Mercer, Ledger Investing 25:36</a></li>
+<li><a href="#h2o4gpu-hands-on-lab---jonathan-c.-mckinney-director-of-research-h2o.ai-10120">H2O4GPU Hands-on Lab - Jonathan C. McKinney, Director of Research, H2O.ai 1:01:20</a></li>
+<li><a href="#equifax-ignite-bringing-data-to-life---david-ferber-pinaki-ghosh-equifax-2710">Equifax Ignite, Bringing Data To Life - David Ferber &amp; Pinaki Ghosh, Equifax 27:10</a></li>
+<li><a href="#hr-analytics-using-machine-learning-to-predict-employee-turnover---matt-dancho-business-science-2918">HR Analytics: Using Machine Learning to Predict Employee Turnover - Matt Dancho, Business Science 29:18</a></li>
+<li><a href="#hands-on-lab-for-sparkling-water---jakub-hava-software-engineer-h2o.ai-5810">Hands-on Lab for Sparkling Water - Jakub Hava, Software Engineer, H2O.ai 58:10</a></li>
+<li><a href="#bringing-scientists-to-data-to-accelerate-discoveries-and-improve-human-health---somalee-datta-1759">Bringing scientists to data to accelerate discoveries and improve human health - Somalee Datta 17:59</a></li>
+<li><a href="#using-h2o-for-mobile-transaction-forecasting-anomaly-detection---capital-one-2544">Using H2O for Mobile Transaction Forecasting &amp; Anomaly Detection - Capital One 25:44</a></li>
+<li><a href="#drive-away-fraudsters-with-driverless-ai---venkatesh-ramanathan-senior-data-scientist-paypal-2825">Drive Away Fraudsters With Driverless AI - Venkatesh Ramanathan, Senior Data Scientist, PayPal 28:25</a></li>
+<li><a href="#nlp-with-h2o-supervised-learning-with-unstructured-text-data---megan-kurka-h2o.ai-1808">NLP with H2O, Supervised Learning with Unstructured Text Data - Megan Kurka, H2O.ai 18:08</a></li>
+<li><a href="#predicting-and-preventing-avoidable-truck-rolls---comcast-2824">Predicting and Preventing Avoidable Truck Rolls - Comcast 28:24</a></li>
+<li><a href="#a-2017-retrospective-on-ai-in-healthcare-and-life-sciences---sanjay-joshi-h2o.ai-1919">A 2017 retrospective on AI in Healthcare and Life Sciences - Sanjay Joshi, H2O.ai 19:19</a></li>
+<li><a href="#repurposing-data-to-solve-emerging-business-problems---arturo-castellanos-baruch-college-cuny-3048">Repurposing data to solve emerging business problems - Arturo Castellanos, Baruch College (CUNY) 30:48</a></li>
+<li><a href="#anti-money-laundering---ashrith-barthur-security-scientist-h2o.ai-2958">Anti-Money Laundering - Ashrith Barthur, Security Scientist, H2O.ai 29:58</a></li>
+<li><a href="#crowdsourcing-computer-vision-and-data-science-for-conservation---tanya-berger-wolf-ibeis.org-2420">Crowdsourcing, computer vision, and data science for conservation - Tanya Berger-Wolf, IBEIS.org 24:20</a></li>
+<li><a href="#robust-approach-to-machine-learning-models-comparison---dmitry-larko-sr.data-scientist-h2o.ai-2511">Robust approach to machine learning models comparison - Dmitry Larko, Sr. Data Scientist, H2O.ai 25:11</a></li>
+<li><a href="#driverless-ai-hands-on-focused-on-machine-learning-interpretability---h2o.ai-5729">Driverless AI Hands-On Focused on Machine Learning Interpretability - H2O.ai 57:29</a></li>
+<li><a href="#an-application-of-the-lasso-in-biomedical-data-sciences---rob-tibshirani-stanford-university-3228">An Application of the Lasso in Biomedical data sciences - Rob Tibshirani, Stanford University 32:28</a></li>
+<li><a href="#driver-vs-driverless-ai---mark-landry-competitive-data-scientist-and-product-manager-h2o.ai-2011">Driver vs Driverless AI - Mark Landry, Competitive Data Scientist and Product Manager, H2O.ai 20:11</a></li>
+<li><a href="#financial-services-panel---accenture-capital-one-equifax-experian-h2o.ai-socure-4522">Financial Services Panel - Accenture, Capital One, Equifax, Experian, H2O.ai, Socure 45:22</a></li>
+<li><a href="#autokazanova42---marios-michailidis-research-data-scientist-h2o.ai-3616">AutoKazanova42 - Marios Michailidis, Research Data Scientist, H2O.ai 36:16</a></li>
+<li><a href="#explaining-black-box-machine-learning-predictions---sameer-singh-uc-irvine-3535">Explaining Black-Box Machine Learning Predictions - Sameer Singh, UC Irvine 35:35</a></li>
+<li><a href="#ai-in-enterprise-panel---datascience.com-enlitic-fastdata.io-kespry-mapd-2928">AI in Enterprise Panel - DataScience.com, Enlitic, Fastdata.io, Kespry, MapD 29:28</a></li>
+<li><a href="#automating-data-science-with-robots---pablo-abreu-vp-head-of-data-science-socure-2619">Automating Data Science with Robots - Pablo Abreu, VP Head of Data Science, Socure 26:19</a></li>
+<li><a href="#natural-language-processing---darren-cook-director-qq-trend-2911">Natural Language Processing - Darren Cook, Director, QQ Trend 29:11</a></li>
+<li><a href="#healthcare-panel---change-healthcare-kaiser-permanente-sanofi-stanford-university-3406">Healthcare Panel - Change Healthcare, Kaiser Permanente, Sanofi, Stanford University 34:06</a></li>
+</ul>
+</div>
+
+<section id="democratizing-intelligence---sri-ambati-ceo-co-founder-h2o.ai-54.50" class="level2">
+<h2>Democratizing Intelligence - Sri Ambati, CEO &amp; Co-Founder, H2O.ai (54.50)</h2>
+<ul>
+<li>Overview</li>
+<li>lot about auto ml</li>
+</ul>
+</section>
+<section id="fireside-chat-with-jeff-herbst-vp-business-development-nvidia-4756" class="level2">
+<h2>Fireside Chat with Jeff Herbst, VP Business Development, NVIDIA 47:56</h2>
+<ul>
+<li>interesting chat about the latest developments at NVIDIA</li>
+</ul>
+</section>
+<section id="convex-optimization---stephen-boyd-professor-stanford-university-5106" class="level2">
+<h2>Convex Optimization - Stephen Boyd, Professor, Stanford University 51:06</h2>
+<ul>
+<li>general introduction about the idea of optimization and convex opt. and its relations to machine learning</li>
+</ul>
+</section>
+<section id="h2o-world-2017-keynote---jim-mchugh-vp-gm-of-data-center-nvidia-2022" class="level2">
+<h2>H2O World 2017 Keynote - Jim McHugh, VP &amp; GM of Data Center, NVIDIA 20:22</h2>
+<ul>
+<li>Role of GPU for ML and vice versa</li>
+</ul>
+</section>
+<section id="scaling-machine-learning-at-booking.com-with-h2o-sparkling-water-2954" class="level2">
+<h2>Scaling Machine Learning at Booking.com with H2O Sparkling Water 29:54</h2>
+<ul>
+<li>general infrastructures for different usecases mainly oriented for going productive</li>
+</ul>
+</section>
+<section id="driverless-ai---introduction-and-a-look-under-the-hood-hands-on-lab---arno-candel-cto-h2o.ai-5845" class="level2">
+<h2>Driverless AI - Introduction and a Look Under the Hood + Hands-On Lab - Arno Candel, CTO, H2O.ai 58:45</h2>
+<ul>
+<li>Workthroug of Driverless AI</li>
+</ul>
+</section>
+<section id="deep-learning-for-the-enterprise---sumit-gupta-ibm-cognitive-systems-2504" class="level2">
+<h2>Deep Learning for the Enterprise - Sumit Gupta, IBM Cognitive Systems 25:04</h2>
+<ul>
+<li>A bit of marketing. IBM does development to semiautomatic data labelling, they also have the best scalability for gpus and sth else…</li>
+</ul>
+</section>
+<section id="intro-to-automl-hands-on-lab---erin-ledell-machine-learning-scientist-h2o.ai-5819" class="level2">
+<h2>Intro to AutoML + Hands-on Lab - Erin LeDell, Machine Learning Scientist, H2O.ai 58:19</h2>
+<ul>
+<li>nice systematic overview about components in model building workflow and which of these components of each stage are already integrated into automl</li>
+<li>shows the r api. Important is here to have the option of a leaderboard of models.</li>
+<li>so far binary and multiclass classification + regression.</li>
+<li>nice slides with links to collections of tutorial, videos etc.</li>
+</ul>
+</section>
+<section id="kaggle-grandmaster-panel-4827" class="level2">
+<h2>Kaggle Grandmaster Panel 48:27</h2>
+<ul>
+<li>lots of questions answered. It could be more if not always every kaggle grandmaster had to answer every question :)</li>
+</ul>
+</section>
+<section id="talk-by-matt-dowle-main-author-of-the-data.table-package-in-r-3826" class="level2">
+<h2>Talk by Matt Dowle, Main Author of the data.table package in R 38:26</h2>
+<ul>
+<li>Some stories about the reputation of data.table, the development of data.table and the sometimes very deep dives into the technique, when solving issues. Announcing pydata.table</li>
+</ul>
+</section>
+<section id="distributed-learning-of-rule-ensemble-models-with-h2o---giovanni-seni-amazons-a9-2949" class="level2">
+<h2>Distributed Learning of Rule Ensemble Models with H2O - Giovanni Seni, Amazon’s A9 29:49</h2>
+<ul>
+<li>Basically try to convert notes of tree/forest into features and fit a linear model to get coefficients. Productionized the rule ensemble within h2o via SQL code. “Models published as data”. Runs as batch job in SQL engine. Online in Java environment.</li>
+</ul>
+</section>
+<section id="leakage-in-meta-modeling-and-its-connection-to-hcc-target-encoding---mathias-muller-h2o.ai-2926" class="level2">
+<h2>Leakage in Meta Modeling And Its Connection to HCC Target-Encoding - Mathias Müller, H2O.ai 29:26</h2>
+<ul>
+<li>super interesting talk, very related to ensemble learning.</li>
+</ul>
+</section>
+<section id="how-to-design-deep-networks-to-process-images-on-mobile-devices---sk-reddy-digitalist-group-2943" class="level2">
+<h2>How to design deep networks to process images on mobile devices - SK Reddy, Digitalist Group 29:43</h2>
+<ul>
+<li>current ideas and tricks on the design for conv. neural netw. for image classification. relatively detailed.</li>
+</ul>
+</section>
+<section id="design-patterns-for-machine-learning-in-production---sergei-izrailev-beeswaxio-2558" class="level2">
+<h2>Design Patterns for Machine Learning in Production - Sergei Izrailev, BeeswaxIO 25:58</h2>
+<ul>
+<li>lots of thoughts of things to have to be taken into account, when going to production.</li>
+</ul>
+</section>
+<section id="mapd-h2o.ai-gpu-powered-visualization-data-analysis-and-machine-learning-3005" class="level2">
+<h2>MapD &amp; H2O.ai: GPU-powered Visualization, Data Analysis and Machine Learning 30:05</h2>
+<ul>
+<li>Used Mapd for quick interactive visuals and reimplemented some ml algos…some benchmarks</li>
+</ul>
+</section>
+<section id="automatic-visualization---leland-wilkinson-chief-scientist-h2o.ai-2922" class="level2">
+<h2>Automatic Visualization - Leland Wilkinson, Chief Scientist, H2O.ai 29:22</h2>
+<ul>
+<li>speaks about the automatic visualisation, that appears, depending on the specific data. Mainly general visualisation is not solved. Much focus on aggregations and outliers. New outlier detection based on a lot of scagnostics, published and partwise implemented in auto ML. Lots of future plans like brushing, suggest features, … Algorithm is also implemented in HDoutliers R package</li>
+</ul>
+</section>
+<section id="harnessing-ai-to-create-a-trillion-dollar-asset-class---john-mercer-ledger-investing-2536" class="level2">
+<h2>Harnessing AI to Create a Trillion Dollar Asset Class - John Mercer, Ledger Investing 25:36</h2>
+<ul>
+<li>…about insurance, didn’t dive into the details…</li>
+</ul>
+</section>
+<section id="h2o4gpu-hands-on-lab---jonathan-c.-mckinney-director-of-research-h2o.ai-10120" class="level2">
+<h2>H2O4GPU Hands-on Lab - Jonathan C. McKinney, Director of Research, H2O.ai 1:01:20</h2>
+<ul>
+<li>showing why and for which algos gpu support is already added to automl. examples: pca, svd, tree boosters,…additional design decisions for the architecture and also benchmarks to compare (mostly with scikitlearn) are added</li>
+</ul>
+</section>
+<section id="equifax-ignite-bringing-data-to-life---david-ferber-pinaki-ghosh-equifax-2710" class="level2">
+<h2>Equifax Ignite, Bringing Data To Life - David Ferber &amp; Pinaki Ghosh, Equifax 27:10</h2>
+<ul>
+<li>showing their own tool, which more or less creates an environment of many smaller tools for analytics and visualisation (like SAS and tableau). Data Munging is based on top of a quick and specified Hadoop layer. Tool seems relatively mature. Focus on quick development from migration to production.s</li>
+</ul>
+</section>
+<section id="hr-analytics-using-machine-learning-to-predict-employee-turnover---matt-dancho-business-science-2918" class="level2">
+<h2>HR Analytics: Using Machine Learning to Predict Employee Turnover - Matt Dancho, Business Science 29:18</h2>
+<ul>
+<li>talks about his company business-science, lime and auto ml in r in the context of his blogarticle about employee turnover within company.</li>
+</ul>
+</section>
+<section id="hands-on-lab-for-sparkling-water---jakub-hava-software-engineer-h2o.ai-5810" class="level2">
+<h2>Hands-on Lab for Sparkling Water - Jakub Hava, Software Engineer, H2O.ai 58:10</h2>
+<ul>
+<li>overview about spark, h2o and sparkling water. technical example for sparkling waters via python within jupyter notebook</li>
+</ul>
+</section>
+<section id="bringing-scientists-to-data-to-accelerate-discoveries-and-improve-human-health---somalee-datta-1759" class="level2">
+<h2>Bringing scientists to data to accelerate discoveries and improve human health - Somalee Datta 17:59</h2>
+<ul>
+<li>improving data base with an own architecture, including privacy concerns for stanford medical…afterwards research on data can be done directly.</li>
+</ul>
+</section>
+<section id="using-h2o-for-mobile-transaction-forecasting-anomaly-detection---capital-one-2544" class="level2">
+<h2>Using H2O for Mobile Transaction Forecasting &amp; Anomaly Detection - Capital One 25:44</h2>
+<ul>
+<li>usecase from business customer: amazon s3 -&gt; sparkling water &lt;-&gt; influx db &lt;-&gt; Amazon EC2 and -&gt; Grafana. Used GBM for timeseries forecasting…</li>
+</ul>
+</section>
+<section id="drive-away-fraudsters-with-driverless-ai---venkatesh-ramanathan-senior-data-scientist-paypal-2825" class="level2">
+<h2>Drive Away Fraudsters With Driverless AI - Venkatesh Ramanathan, Senior Data Scientist, PayPal 28:25</h2>
+<ul>
+<li>Want to detect Fraudsters which are collaborative buyers and sellers. Solution includes analysising automatically the sellers/buyers network structure and applying techniques similar to text2vec from NLP.</li>
+</ul>
+</section>
+<section id="nlp-with-h2o-supervised-learning-with-unstructured-text-data---megan-kurka-h2o.ai-1808" class="level2">
+<h2>NLP with H2O, Supervised Learning with Unstructured Text Data - Megan Kurka, H2O.ai 18:08</h2>
+<ul>
+<li>word2vec is implemented in automl. used amazon reviews. recommends to use word2vec models from other datasets for robustnes. lstm and rnn used on the same problem in another talk.</li>
+</ul>
+</section>
+<section id="predicting-and-preventing-avoidable-truck-rolls---comcast-2824" class="level2">
+<h2>Predicting and Preventing Avoidable Truck Rolls - Comcast 28:24</h2>
+<ul>
+<li>ai team at comcast has several different usecases…one cool thing is that customer behaviour during shows can be transcribed and then analysed via NLP techniques. This helps, since automatically scenes and highlights can be filtered for, shown and also recommended. They were trying to predict Truck Rolls. Again Network information was important…Now they try to prevalently predict these occurencies.</li>
+</ul>
+</section>
+<section id="a-2017-retrospective-on-ai-in-healthcare-and-life-sciences---sanjay-joshi-h2o.ai-1919" class="level2">
+<h2>A 2017 retrospective on AI in Healthcare and Life Sciences - Sanjay Joshi, H2O.ai 19:19</h2>
+<ul>
+<li>quick overview of potentials and current ai solutions in these sectors</li>
+</ul>
+</section>
+<section id="repurposing-data-to-solve-emerging-business-problems---arturo-castellanos-baruch-college-cuny-3048" class="level2">
+<h2>Repurposing data to solve emerging business problems - Arturo Castellanos, Baruch College (CUNY) 30:48</h2>
+<ul>
+<li>…</li>
+</ul>
+</section>
+<section id="anti-money-laundering---ashrith-barthur-security-scientist-h2o.ai-2958" class="level2">
+<h2>Anti-Money Laundering - Ashrith Barthur, Security Scientist, H2O.ai 29:58</h2>
+<ul>
+<li>sources of money laundering: unrecorded sources of income, human trafficing, organised crime.</li>
+<li>How does it affect us? - puppet government, less people have to pay more taxes, high crime rate is correlated to these sources as well.</li>
+<li>How to catch currently: rule based systems for special behaviour -&gt; example launderers make transactions under 10.000 since from 10.000 on the bank makes a note to the state… In the end these rules are evaluated…</li>
+<li>usually this ends up in a classification task. One usecase where no labelled data was available was handled via k-means clustering.</li>
+</ul>
+</section>
+<section id="crowdsourcing-computer-vision-and-data-science-for-conservation---tanya-berger-wolf-ibeis.org-2420" class="level2">
+<h2>Crowdsourcing, computer vision, and data science for conservation - Tanya Berger-Wolf, IBEIS.org 24:20</h2>
+<ul>
+<li>super exciting talk about animal classification at extraction of a lot of other information from animal pictures. Via identifying of specific individuals and the related timestamps, the path of the animal, the population of a species etc can be approximately recreated and visualized.</li>
+<li>more or less: “following species over space, time and individuals” via public images.</li>
+<li>currently 15 species are counted and for example for zebras, this seems to work very accurately.</li>
+</ul>
+</section>
+<section id="robust-approach-to-machine-learning-models-comparison---dmitry-larko-sr.data-scientist-h2o.ai-2511" class="level2">
+<h2>Robust approach to machine learning models comparison - Dmitry Larko, Sr. Data Scientist, H2O.ai 25:11</h2>
+<ul>
+<li>some nice tricks for handling specific causes of problems.</li>
+<li>example, outliers: 2 strategies. 1. remove them. 2. let them in, but remove them from validation test set. points to a previous kaggle competition (I thik mercedes Benz) where a team had a strong approach on automatic outlier detection. If outliers are introduced by error, take approach 1, if outliers are regarding artifacts in the data, choose approach 2. Within driverless ai there is a relatively more sophisticated approach based on extra automatic feature engineering in case of effects of outliers (as far as I understand).</li>
+<li>lots of binary variables may work well for linear models or neural nets.</li>
+<li>If more mixed types of colums, then maybe more tree based, but with pca or svd for dimensionallity reduction for the binary columns before.</li>
+<li>it might be r^2 is more sensitive to outliers than rmse</li>
+<li>in general try to test a lot</li>
+<li>when doing missing value imputation, you create a new column without missing values, but you also don’t drop the original column or at least you have a binary extra column, which says orininally na and originally not na.</li>
+<li>in general lots of binary or a category which is one hot encoded into 100 binaries are working well with linear models, but for trees this is some kind of overhead and may perform not so good, so other stuff lie autoencoding etc. dimensionalityreduction etc. should be tested…</li>
+</ul>
+</section>
+<section id="driverless-ai-hands-on-focused-on-machine-learning-interpretability---h2o.ai-5729" class="level2">
+<h2>Driverless AI Hands-On Focused on Machine Learning Interpretability - H2O.ai 57:29</h2>
+<ul>
+<li>explains explanation techniques. Shows options in Driverless AI. Most interesting questions: Why did you choose k-lime over lime implementation?</li>
+<li>First k-lime is faster, since you dont have to perturbate inputs (calculate distances, is this really the case) and generate predictions + model for each new row. Second: It is easier to create evaluate local model predictions, since it is on real data and not just on sampled predictions for non real cases. Before he also mentioned that it could have better chances for regulated business. On the other hand, lime could often have better modells than k-lime.</li>
+</ul>
+</section>
+<section id="an-application-of-the-lasso-in-biomedical-data-sciences---rob-tibshirani-stanford-university-3228" class="level2">
+<h2>An Application of the Lasso in Biomedical data sciences - Rob Tibshirani, Stanford University 32:28</h2>
+<ul>
+<li>“How many units of platelets will the stanford university need tomorrow?” Problem: these specific platelets only last 5 days, so overall 8% per year is overordered per year and thrown away. Might be greatly applicable to problems in retail or logistics like ordering groceries for a supermarket.</li>
+</ul>
+<p>Note: lasso feature selection does selection for linear models without regard of interactions, so important features for other models like gbm etc. might be filtered out…</p>
+</section>
+<section id="driver-vs-driverless-ai---mark-landry-competitive-data-scientist-and-product-manager-h2o.ai-2011" class="level2">
+<h2>Driver vs Driverless AI - Mark Landry, Competitive Data Scientist and Product Manager, H2O.ai 20:11</h2>
+<ul>
+<li>Basically about understanding and just using the engineered features, which the driverless ai created.</li>
+<li>finished in kaggle competition at 6th using driverless ai…</li>
+</ul>
+</section>
+<section id="financial-services-panel---accenture-capital-one-equifax-experian-h2o.ai-socure-4522" class="level2">
+<h2>Financial Services Panel - Accenture, Capital One, Equifax, Experian, H2O.ai, Socure 45:22</h2>
+<p>…</p>
+</section>
+<section id="autokazanova42---marios-michailidis-research-data-scientist-h2o.ai-3616" class="level2">
+<h2>AutoKazanova42 - Marios Michailidis, Research Data Scientist, H2O.ai 36:16</h2>
+<ul>
+<li>introduction to ensembles and the idea of automizing the pipeline</li>
+</ul>
+</section>
+<section id="explaining-black-box-machine-learning-predictions---sameer-singh-uc-irvine-3535" class="level2">
+<h2>Explaining Black-Box Machine Learning Predictions - Sameer Singh, UC Irvine 35:35</h2>
+<ul>
+<li>describes a bit the order of interpretable, complex and again interpretable available techniques</li>
+<li>Motivation for lime</li>
+<li>differentiating bad and good classifiers in the sense of lime</li>
+<li>motivating anchors, which are artificial training data like “the weather is not bad”, “the food is not bad” etc. Basically just create training data with specific target to create strong indication for an explainr.</li>
+</ul>
+</section>
+<section id="ai-in-enterprise-panel---datascience.com-enlitic-fastdata.io-kespry-mapd-2928" class="level2">
+<h2>AI in Enterprise Panel - DataScience.com, Enlitic, Fastdata.io, Kespry, MapD 29:28</h2>
+<ul>
+<li>…</li>
+</ul>
+</section>
+<section id="automating-data-science-with-robots---pablo-abreu-vp-head-of-data-science-socure-2619" class="level2">
+<h2>Automating Data Science with Robots - Pablo Abreu, VP Head of Data Science, Socure 26:19</h2>
+<ul>
+<li>… ## Healthcare, Spark, H2O, EMR, Production - Adam Sullivan, Change Healthcare 27:39</li>
+<li>Describes Data Science Workflow at Change Healthcare…</li>
+</ul>
+</section>
+<section id="natural-language-processing---darren-cook-director-qq-trend-2911" class="level2">
+<h2>Natural Language Processing - Darren Cook, Director, QQ Trend 29:11</h2>
+<ul>
+<li>Why and when to use word embeddings. PCA, GLRM, Auto-Encoder and word embeddings are the implemented dimension reduction techniques in H20. Word embeddings: better solution than one hot encoding for text data. Idea: See which words occur in same contexts? These words might have the same grammar functionality or the same meaning. Vectors like girl, boy or queen, king look often very similar and it can become possible to do arithmetic operations.</li>
+</ul>
+<p>Example: 10 sentences like: I like to drive a blue/green/… lorry/ferrari/… First step tokenization. I. e. split on white space. Sedond: Word 2 vec can be applied and data can be visualized. Parameters are epochs (training) and dimensions. If more than two dimensions are applied, afterwards a PCA can be applied to better visualise the data in 2 dimensions. Depending on the language you need a different preprocessing and a different tokenization, but the rest is the same. With tokenization you can also get information if word is a verb, noun etc. also ngrams can be thrown into the algo. There are pre made corpuses and domain specific ones. But they have used specific considerations about punctuation and stop words, which might not fit your needs. You can train word2vec yourself. It’s not too cpu expensive.</p>
+</section>
+<section id="healthcare-panel---change-healthcare-kaiser-permanente-sanofi-stanford-university-3406" class="level2">
+<h2>Healthcare Panel - Change Healthcare, Kaiser Permanente, Sanofi, Stanford University 34:06</h2>
+<ul>
+<li>…</li>
+</ul>
+</section>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

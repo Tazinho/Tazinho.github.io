@@ -11,7 +11,7 @@
 
 
 
-<title></title>
+<title>rstudio_conf_notes.utf8</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -20,8 +20,8 @@
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-1.1/textmate.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -30,10 +30,12 @@
   }
 </style>
 <script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
 }
 </script>
 
@@ -187,6 +189,9 @@ $(document).ready(function () {
 <li>
   <a href="user2017.html">user2017</a>
 </li>
+<li>
+  <a href="h20World2017.html">H2OWorld2017</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -241,7 +246,7 @@ $(document).ready(function () {
 </ul>
 </div>
 
-<div id="talk1-62-min-data-science-in-the-tidyverse-hadley-wickham-link" class="section level2">
+<section id="talk1-62-min-data-science-in-the-tidyverse-hadley-wickham-link" class="level2">
 <h2>talk1 (62 min): Data Science in the Tidyverse – Hadley Wickham <a href="https://www.rstudio.com/resources/videos/data-science-in-the-tidyverse/">link</a></h2>
 <ul>
 <li>goal:solve complex problems by combining simple uniform pieces</li>
@@ -270,7 +275,7 @@ $(document).ready(function () {
 <li><p>applications: tidy text, sf (successor of the sp, uses list columns), cross validation (with list columns), tidy_quant (tidy financial timeseries), maybe ml with caret (or mlr) pipelearner, …</p></li>
 <li>4 principles:</li>
 </ul>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li>each function encapsulates one task</li>
 <li>and is either a query or a command</li>
 <li>Functions are composed with <code>%&gt;%</code></li>
@@ -281,8 +286,8 @@ $(document).ready(function () {
 <li><p>when working with many data frames it mitght be not alway the best idea</p></li>
 <li><p>dbi interface for the odbc will be worked on</p></li>
 </ul>
-</div>
-<div id="talk-2-117-min-building-dashboards-with-shiny-tutorial-joe-cheng-winston-chang-link" class="section level2">
+</section>
+<section id="talk-2-117-min-building-dashboards-with-shiny-tutorial-joe-cheng-winston-chang-link" class="level2">
 <h2>talk 2 (117 min): Building Dashboards with Shiny Tutorial – Joe Cheng &amp; Winston Chang <a href="https://www.rstudio.com/resources/videos/building-dashboards-with-shiny-tutorial/">link</a></h2>
 <ul>
 <li><p><strong>first part joe cheng, server side</strong></p></li>
@@ -295,15 +300,15 @@ $(document).ready(function () {
 </ul></li>
 <li>techniques:
 <ul>
-<li><ol style="list-style-type: decimal">
+<li><ol type="1">
 <li>reactive file reader/pull functions</li>
 </ol></li>
-<li><ol start="2" style="list-style-type: decimal">
+<li><ol start="2" type="1">
 <li>optimizing performance</li>
 </ol></li>
 </ul></li>
 </ul>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li>user vs data driven events
 <ul>
 <li>invalidate later() is ok but has overhead</li>
@@ -315,7 +320,7 @@ $(document).ready(function () {
 <ul>
 <li>how do we filter arrange etc while data changes underneath… just to understand…it is done more or less automatically</li>
 </ul>
-<ol start="2" style="list-style-type: decimal">
+<ol start="2" type="1">
 <li>performance
 <ul>
 <li>Cache Results</li>
@@ -330,7 +335,7 @@ $(document).ready(function () {
 <li><p>logging was not well introduced via shiny</p></li>
 <li><strong>Userinterface (W. Chang)</strong></li>
 </ul>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li>dynamic (in clientside with html widgets) vs stable dashboards</li>
 <li>flexdashboard (publish on server, RPubs, RStudoConnect, works with html_widgets, crosstalk and shiny, also auch mit reactive inputs im letzten Fall, galube ich…)</li>
 <li>shinydashboard<br />
@@ -339,8 +344,8 @@ $(document).ready(function () {
 <ul>
 <li>deploy to server ,rstudioapps.io, rstudioconnect</li>
 </ul>
-</div>
-<div id="talk-3-130-min-happy-r-users-purrr---tutorial-charlotte-wickham-link" class="section level2">
+</section>
+<section id="talk-3-130-min-happy-r-users-purrr---tutorial-charlotte-wickham-link" class="level2">
 <h2>talk 3 (130 min): happy R users purrr - Tutorial (charlotte wickham) <a href="https://www.rstudio.com/resources/videos/happy-r-users-purrr-tutorial/">link</a></h2>
 <ul>
 <li><p><code>lapply(people, function(x) length(x$starships))</code> is equivalent to:<br />
@@ -387,8 +392,8 @@ $(document).ready(function () {
 <li>transpose takes and returns a list…</li>
 <li><p>the combination of the last two is very good for dealing with errorcatching…</p></li>
 </ul>
-</div>
-<div id="talk-4-24-min-whats-new-with-shiny-joe-cheng-link" class="section level2">
+</section>
+<section id="talk-4-24-min-whats-new-with-shiny-joe-cheng-link" class="level2">
 <h2>talk 4 (24 min): What’s new with Shiny – Joe Cheng <a href="https://www.rstudio.com/resources/videos/whats-new-with-shiny/">link</a></h2>
 <p>near future: - automated testing - shiny tests - write tests - run tests - update in a sandbox and run tests - compare tests - decide if you can take the update or have to debug + test event recorder to record named tests for the userinterface -&gt; json of the shiny states during the recording/snapshot, and also png to get the overall picture of the bug - api endpoints</p>
 <p>after that: - asynchronous tasks</p>
@@ -400,8 +405,8 @@ $(document).ready(function () {
 <li>possibility for api to activate the interactive widgets</li>
 <li>at the moment only data retrieving and no authentification at the moment</li>
 </ul>
-</div>
-<div id="talk-5-22-min-database-best-practices-jim-hester-link" class="section level2">
+</section>
+<section id="talk-5-22-min-database-best-practices-jim-hester-link" class="level2">
 <h2>talk 5 (22 min): Database Best Practices – Jim Hester <a href="https://www.rstudio.com/resources/videos/database-best-practices/">link</a></h2>
 <ul>
 <li><p>shows latest work at dbi, odbc, pool</p></li>
@@ -434,8 +439,8 @@ $(document).ready(function () {
 </ul>
 <p>future: - generic connection tab in rstudio (like the one for sparklyr) - reestablish previous connections - viewer for available drivers - view sources - view tables - view schemes -&gt; within rstudio v 1.1 &lt;3</p>
 <p>rstudio server pro: - easy setup for a wide variety of db (50+, including hive, impala, postgresq, mysql) - improved performance - improved error messaging - kerberos support</p>
-</div>
-<div id="talk-6-18-min-push-button-publish-in-rstudio-connect-jeff-allen-link" class="section level2">
+</section>
+<section id="talk-6-18-min-push-button-publish-in-rstudio-connect-jeff-allen-link" class="level2">
 <h2>talk 6 (18 min): Push-Button Publish in RStudio Connect – Jeff Allen <a href="https://www.rstudio.com/resources/videos/push-button-publish-in-rstudio-connect/">link</a></h2>
 <p>how to safe achievements?</p>
 <ul>
@@ -463,8 +468,8 @@ $(document).ready(function () {
 <li>also hosted by rstudio</li>
 <li><p>available on linux/virtual machine</p></li>
 </ul>
-</div>
-<div id="talk-7-23-min-r-and-spark-javier-luraschi-link" class="section level2">
+</section>
+<section id="talk-7-23-min-r-and-spark-javier-luraschi-link" class="level2">
 <h2>talk 7 (23 min): R and Spark – Javier Luraschi <a href="https://www.rstudio.com/resources/videos/r-and-spark/">link</a></h2>
 <ul>
 <li>test locally, spark_install(), spark_connect(master = “local”)</li>
@@ -479,8 +484,8 @@ $(document).ready(function () {
 <li>rstudio and shiny server pro certified with cloudera</li>
 <li>config[[spark-shell-memory]] or so to give more memory then 500mb default or so</li>
 </ul>
-</div>
-<div id="talk-8-24-min-dynamic-shiny-interfaces-barbara-borges-ribeiro-link" class="section level2">
+</section>
+<section id="talk-8-24-min-dynamic-shiny-interfaces-barbara-borges-ribeiro-link" class="level2">
 <h2>talk 8 (24 min): Dynamic Shiny Interfaces – Bárbara Borges Ribeiro <a href="https://www.rstudio.com/resources/videos/dynamic-shiny-interfaces/">link</a></h2>
 <ul>
 <li>dynamic ui means that you return a plot, a summary or a table depending on the choose of a user</li>
@@ -497,8 +502,8 @@ $(document).ready(function () {
 <li>there are also other ways for dynamic shiny, like conditional panels or any javascript stuff.</li>
 <li>you should use renderUI, when reactive ui is enough.</li>
 </ul>
-</div>
-<div id="talk-9-24-min-using-web-apis-from-r-amanda-gadrow-link" class="section level2">
+</section>
+<section id="talk-9-24-min-using-web-apis-from-r-amanda-gadrow-link" class="level2">
 <h2>talk 9 (24 min): Using Web APIs from R – Amanda Gadrow <a href="https://www.rstudio.com/resources/videos/using-web-apis-from-r/">link</a></h2>
 <ul>
 <li>some nice api packages: aws.s3, RGoogleAnalytics, acs, etc.</li>
@@ -518,8 +523,8 @@ $(document).ready(function () {
 <li>you can schedule api calls via rstudioconnect (or other ways),</li>
 <li><p>you can also run them regular from s3</p></li>
 </ul>
-</div>
-<div id="talk-10-25-min-bookmarking-shiny-state-finally-winston-chang-link" class="section level2">
+</section>
+<section id="talk-10-25-min-bookmarking-shiny-state-finally-winston-chang-link" class="level2">
 <h2>talk 10 (25 min): Bookmarking Shiny State (Finally!) – Winston Chang <a href="https://www.rstudio.com/resources/videos/bookmarking-shiny-state-finally/">link</a></h2>
 <ul>
 <li>it is about sharing results of a shiny app. you can already share the app. but the results of an app couldn’t be shared before bookmarkable state. You always had to write the way to the results.</li>
@@ -538,14 +543,14 @@ $(document).ready(function () {
 <li>there might be ways to go back from the bookmarked app to the start of the app, even this is not intended at the moment…</li>
 <li>for the “savin on a file with the shiny server way” it would be nice to give the file with the bookmarking to the user, but that is not possible, at least at the moment.</li>
 </ul>
-</div>
-<div id="talk-11-17-min-competitive-modeling-of-outcomes-for-prediction-max-kuhn-link" class="section level2">
+</section>
+<section id="talk-11-17-min-competitive-modeling-of-outcomes-for-prediction-max-kuhn-link" class="level2">
 <h2>talk 11 (17 min): Competitive Modeling of Outcomes for Prediction – Max Kuhn <a href="https://www.rstudio.com/resources/videos/competitive-modeling-of-outcomes-for-prediction/">link</a></h2>
 <ul>
 <li>gain &amp; lift…</li>
 </ul>
-</div>
-<div id="talk-12-22min-fun-with-htmlwidgets3d-interactive-network-visualization-with-threejs-and-r-bryan-lewis-link" class="section level2">
+</section>
+<section id="talk-12-22min-fun-with-htmlwidgets3d-interactive-network-visualization-with-threejs-and-r-bryan-lewis-link" class="level2">
 <h2>talk 12 (22min): Fun with htmlwidgets:3D interactive network visualization with threejs and R – Bryan Lewis <a href="https://www.rstudio.com/resources/videos/interactive-network-visualization-with-threejs-and-r/">link</a></h2>
 <ul>
 <li>introduced 2 years ago</li>
@@ -559,8 +564,8 @@ $(document).ready(function () {
 <li>3d layouts</li>
 <li>easy to play with really big graphs</li>
 </ul>
-</div>
-<div id="talk-13-26-min-writing-readable-code-with-pipes-bob-rudis-link" class="section level2">
+</section>
+<section id="talk-13-26-min-writing-readable-code-with-pipes-bob-rudis-link" class="level2">
 <h2>talk 13 (26 min): Writing Readable Code with Pipes – Bob Rudis <a href="https://www.rstudio.com/resources/videos/writing-readable-code-with-pipes/">link</a></h2>
 <ul>
 <li>81 Packages on Cran that export the pipe operator</li>
@@ -569,8 +574,8 @@ $(document).ready(function () {
 <li>use stop_for_status() to look into the risky data stuff within the pipeline</li>
 <li>use list.files %&gt;% map_df</li>
 </ul>
-</div>
-<div id="talk-14-20-min-mapping-in-r-with-leaflet-bhaskar-karambelkar-link" class="section level2">
+</section>
+<section id="talk-14-20-min-mapping-in-r-with-leaflet-bhaskar-karambelkar-link" class="level2">
 <h2>talk 14 (20 min): Mapping in R with Leaflet – Bhaskar Karambelkar <a href="https://www.rstudio.com/resources/videos/mapping-in-r-with-leaflet/">link</a></h2>
 <ul>
 <li>based on version 0.7 of the leaflet javascript library. The most actual one is version 1.0</li>
@@ -595,18 +600,20 @@ $(document).ready(function () {
 <li>topojason for dynamic chloropleth maps is awesome…</li>
 <li><p>for now everything thrown into leaflet has to be in lat/lng. however this is discussed and might be more flexible someday</p></li>
 </ul>
-</div>
-<div id="talk-15-19-min-putting-square-pegs-in-round-holes-using-list-cols-in-your-dataframe-jenny-bryan-link" class="section level2">
+</section>
+<section id="talk-15-19-min-putting-square-pegs-in-round-holes-using-list-cols-in-your-dataframe-jenny-bryan-link" class="level2">
 <h2>talk 15 (19 min): Putting square pegs in round holes: Using list-cols in your dataframe – Jenny Bryan <a href="https://www.rstudio.com/resources/videos/using-list-cols-in-your-dataframe/">link</a></h2>
 <ul>
 <li>feels awkward, but you feel like a programming god in the end.</li>
 <li>you need purr (by hadley and lionel henry)</li>
 <li>works great with dplyr, broom, tibble,…</li>
 <li>vectors don’t have to be atomic, so you can also put lists into a data.frame</li>
-<li>why?</li>
+<li>why?
+<ul>
 <li>regex with sometimes more than one match</li>
 <li>some json or xml from an api which can be a nested list</li>
 <li>split apply combine problems (lapply,…)</li>
+</ul></li>
 <li>in a data frame its cooler, since you think about filtering, arranging,…</li>
 <li>you can use the existing toolkin (dplyr, …)</li>
 <li>keep multiple vectors intact and in sync</li>
@@ -626,15 +633,21 @@ $(document).ready(function () {
 <li>if you have many models in your columns, just use the broom package (tidy, augment, …)</li>
 <li>inspections: View (sometimes), listviewer, str with list.level = 1, or list.level = 10 (for example) and maybe a new tool in Rstudio (not yet announced) can help to view list columns</li>
 <li>work with listcolumns: use map in dplyr functions</li>
-<li>when nested data.frames, when listed columns? -&gt; nested data.frames are special cases of list columns.</li>
+<li>when nested data.frames, when listed columns? -&gt; nested data.frames are special cases of list columns.
+<ul>
 <li>they can replace ddply and are cool for split apply combine</li>
-<li>when list colums, when group_by %&gt;% do()</li>
+</ul></li>
+<li>when list colums, when group_by %&gt;% do()
+<ul>
 <li>jenny bryan thinks do() is complicated somehow and she just likes the other workflow more</li>
-<li>might this be a possibility to reduce the complexity in many bioconductor packages easier with this approach?</li>
+</ul></li>
+<li>might this be a possibility to reduce the complexity in many bioconductor packages easier with this approach?
+<ul>
 <li>there are many ideas, but at the moment they dont seem to converge directly into this direction.</li>
+</ul></li>
 </ul>
-</div>
-<div id="talk-16-10-min-linking-html-widgets-with-crosstalk-joe-cheng-link" class="section level2">
+</section>
+<section id="talk-16-10-min-linking-html-widgets-with-crosstalk-joe-cheng-link" class="level2">
 <h2>talk 16 (10 min): Linking HTML Widgets with Crosstalk – Joe Cheng <a href="https://www.rstudio.com/resources/videos/linking-html-widgets-with-crosstalk/">link</a></h2>
 <ul>
 <li>crosstalk is somehow the webbased extension of cranvas and/or ggobi (coordinated multiple views)</li>
@@ -642,8 +655,8 @@ $(document).ready(function () {
 <li>three approaches to this: crosstalk, shiny, js (robservable)</li>
 <li>filtering and linked brushing for data based on data frames (crosstalk) syntaxdifferences: data &lt;- quakes; leaflet(data) %&gt;% addMarkers; datatable(data) vs data &lt;- SharedData$new(data); leaflet(data) %&gt;% addMarkers; datatable(data)</li>
 </ul>
-</div>
-<div id="talk-17-23-min-text-mining-the-tidy-way-julia-silge-link" class="section level2">
+</section>
+<section id="talk-17-23-min-text-mining-the-tidy-way-julia-silge-link" class="level2">
 <h2>talk 17 (23 min): Text Mining the tidy Way – Julia Silge <a href="https://www.rstudio.com/resources/videos/text-mining-the-tidy-way/">link</a></h2>
 <ul>
 <li>get a text, safe the line, use unnest_tokens(word, text) and get the format of one word per row.</li>
@@ -657,8 +670,8 @@ $(document).ready(function () {
 <li>book: tidy text mining (includes case studies)</li>
 <li>if you have different speakers, extend then to a column, before unnesting into the tidy format</li>
 </ul>
-</div>
-<div id="talk-18-25-min-trelliscopejs-ryan-hafen-link" class="section level2">
+</section>
+<section id="talk-18-25-min-trelliscopejs-ryan-hafen-link" class="level2">
 <h2>talk 18 (25 min): TrelliscopeJS – Ryan Hafen <a href="https://www.rstudio.com/resources/videos/trelliscopejs/">link</a></h2>
 <ul>
 <li>interactive displays of small multiples</li>
@@ -677,18 +690,18 @@ $(document).ready(function () {
 <li>fit in one markdown vis</li>
 <li>has bookmarkable/sharable state</li>
 </ul>
-</div>
-<div id="talk-19-19-min-teaching-introductory-statistics-using-the-tidyverse-via-bookdown-chester-ismay-link" class="section level2">
+</section>
+<section id="talk-19-19-min-teaching-introductory-statistics-using-the-tidyverse-via-bookdown-chester-ismay-link" class="level2">
 <h2>talk 19 (19 min): Teaching Introductory Statistics Using the tidyverse via bookdown – Chester Ismay <a href="https://www.rstudio.com/resources/videos/teaching-introductory-statistics-using-the-tidyverse/">link</a></h2>
 <ul>
 <li>bringing R to different subjects in school</li>
 <li>writing a book to lower the barrier to return to the language</li>
 <li>writing a book to use the interactive and build up a formula paradigm</li>
 </ul>
-</div>
-<div id="talk-20-48-min-lightning-talks-user-submitted-talks-link" class="section level2">
+</section>
+<section id="talk-20-48-min-lightning-talks-user-submitted-talks-link" class="level2">
 <h2>talk 20 (48 min): Lightning Talks – User Submitted Talks <a href="https://www.rstudio.com/resources/videos/user-lightning-talks/">link</a></h2>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li>easyMake (package)</li>
 </ol>
 <ul>
@@ -697,32 +710,35 @@ $(document).ready(function () {
 <li>also has an RStudio plugin</li>
 <li>gives a working makefile, not a perfect one</li>
 </ul>
-<ol start="2" style="list-style-type: decimal">
+<ol start="2" type="1">
 <li>ROpenSci packages every muggle should have heard about (Kathik Ram)</li>
 </ol>
 <ul>
-<li>Magick package, helps you with images transformate, read, write, some magic stuff, …</li>
+<li>Magick package, helps you with images transformate, read, write, some magic stuff, …
+<ul>
 <li>perfect with gganimate</li>
 <li>pipefriendly</li>
-<li>hunspell</li>
+</ul></li>
+<li>hunspell
+<ul>
 <li>spellcheking in R for text and textanalysis</li>
 <li>lots of advanced functionality</li>
+</ul></li>
 <li>Tesseract</li>
-<li>Travis + tic</li>
+<li>Travis + tic
+<ul>
 <li>add tic to your travis yaml</li>
+</ul></li>
 </ul>
-<ol start="3" style="list-style-type: decimal">
+<ol start="3" type="1">
 <li>Scalable Data Science with R and Spark – Best Practices and Lessons Learned</li>
 </ol>
 <ul>
 <li>Rdd</li>
 <li>DataFrames</li>
-<li>Transformers
-<ul>
-<li>Actions</li>
-</ul></li>
+<li>Transformers - Actions</li>
 </ul>
-<ol start="4" style="list-style-type: decimal">
+<ol start="4" type="1">
 <li><p>ggedit: interactive ggplot aesthetic and theme editor</p></li>
 <li>Exploring correlations in a tidy R framework with corrr</li>
 </ol>
@@ -733,13 +749,13 @@ $(document).ready(function () {
 <li>fcts for printing, plotting, clustering</li>
 <li>recomments widyr for structures that are not perfect for tidy format</li>
 </ul>
-<ol start="6" style="list-style-type: decimal">
+<ol start="6" type="1">
 <li>Exploration of Literature Databases with Shiny</li>
 </ol>
 <ul>
 <li>shiny in production</li>
 </ul>
-<ol start="7" style="list-style-type: decimal">
+<ol start="7" type="1">
 <li><p>Business intelligence with R bi plattform ending in R backend + data (googlesheets, mysql, python, crm, …) -&gt; googlebigquery -&gt; flexdashboard (incl. shiny, used a child rmd file -&gt; every page has its own file) + highcharter</p></li>
 <li>bsplus: Using Bootstrap to extend your Shiny app</li>
 </ol>
@@ -749,7 +765,7 @@ $(document).ready(function () {
 <li>everything pipeable</li>
 <li>is coming to cran</li>
 </ul>
-<ol start="9" style="list-style-type: decimal">
+<ol start="9" type="1">
 <li><p>Bringing R Into Dev: Playing Nice With Others use shiny, bash and feather. the latter plays nicely with python and julia</p></li>
 <li>FlashR: Parallelize and Scale R Machine</li>
 </ol>
@@ -762,12 +778,12 @@ $(document).ready(function () {
 <li>outperforms revolution r :D</li>
 <li>easy to use, fast and you can test it on the webpage flashx.io</li>
 </ul>
-</div>
-<div id="talk21-68-min-finding-and-telling-stories-with-r-andrew-flowers-link" class="section level2">
+</section>
+<section id="talk21-68-min-finding-and-telling-stories-with-r-andrew-flowers-link" class="level2">
 <h2>talk21 (68 min): Finding and Telling Stories with R – Andrew Flowers <a href="https://www.rstudio.com/resources/videos/finding-and-telling-stories-with-r/">link</a></h2>
 <p>subtitle “6 types of data stories and how to find them” - good journalism is good storytelling</p>
-</div>
-<div id="talk-22-114-min-advanced-r-markdown-tutorial-yihui-xie-link" class="section level2">
+</section>
+<section id="talk-22-114-min-advanced-r-markdown-tutorial-yihui-xie-link" class="level2">
 <h2>talk 22 (114 min): Advanced R Markdown Tutorial – Yihui Xie <a href="https://www.rstudio.com/resources/videos/advanced-r-markdown-tutorial/">link</a></h2>
 <ul>
 <li>rmarkdown = knitr + pandoc</li>
@@ -791,7 +807,7 @@ $(document).ready(function () {
 <li>bookdown (worked on it whole 2016). outputs: pdf, html, ebooks. writing on a specific postprocessor took most of the time, cause many features had to be synchronized between different output formats (the real challenge is to make sth work for multiple outputformats at the same time.). makes extensive use of regular expressions.</li>
 <li>three tips from his life as a software developer:</li>
 </ul>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li>you cant make everyone happy. focus first on making one person veryvery happy.</li>
 <li>use humor and provide little easter eggs. think differently</li>
 <li>stand on the shoulders of giants. you dont have to know about c, c++, python, …, but you can reuse frameworks and build up on them or their ideas.</li>
@@ -799,8 +815,8 @@ $(document).ready(function () {
 <li>reask the user why he wants sth. maybe his intention is strange and afterwards he doesnt have the feature request anymore.</li>
 <li>be very open and engagng to users in the open source and pull requests. maybe others can contribute and work further on your package</li>
 </ol>
-</div>
-<div id="talk-23-131-happy-git-and-gihub-for-the-user-tutorial-jenny-bryan-link" class="section level2">
+</section>
+<section id="talk-23-131-happy-git-and-gihub-for-the-user-tutorial-jenny-bryan-link" class="level2">
 <h2>talk 23 (131): Happy Git and Gihub for the useR Tutorial – Jenny Bryan <a href="https://www.rstudio.com/resources/videos/happy-git-and-gihub-for-the-user-tutorial/">link</a></h2>
 <ul>
 <li>uses allice barlet s slides for her tutorial a lot</li>
@@ -822,35 +838,41 @@ $(document).ready(function () {
 <li>rmarkdown rendered as html on github since around 1 year</li>
 <li>edit, creations and also deletions have to be staged/committed</li>
 <li>you can put yml on top of regular r files also, and create md files instead of r files on github.</li>
-<li>github can render repository as a website, since december 16, you just need to have some thins as markdown and data as csv or tsv.</li>
+<li>github can render repository as a website, since december 16, you just need to have some thins as markdown and data as csv or tsv.
+<ul>
 <li>you can create indexes in every hierarchy of a file. these can link to other places.</li>
 <li>just activate github pages within repository settings</li>
 <li>github pages is a jekyll powered service</li>
 <li>under source choose master branch and safe.</li>
 <li>github can show you differences in commited data analysis results, like diffs in data or images.</li>
+</ul></li>
 <li>github enterprise lets you run github on premise</li>
 <li>oh shit git webpage is a nice page for common github issues</li>
 <li>you have to pull always when there is sometihin on gh that you dont have. otherwise you cant push</li>
 </ul>
-</div>
-<div id="talk-24-25-min-opinionated-analysis-development-hilary-parker-link" class="section level2">
+</section>
+<section id="talk-24-25-min-opinionated-analysis-development-hilary-parker-link" class="level2">
 <h2>talk 24 (25 min): Opinionated Analysis Development Hilary Parker <a href="https://www.rstudio.com/resources/videos/opinionated-analysis-development/">link</a></h2>
 <p>~ try to blame the process and not the person -&gt; when errors occur, optimise the process</p>
-</div>
-<div id="talk-25-26-min-whats-new-with-the-ide-kevin-ushey-link" class="section level2">
+</section>
+<section id="talk-25-26-min-whats-new-with-the-ide-kevin-ushey-link" class="level2">
 <h2>talk 25 (26 min): What’s New with the IDE – Kevin Ushey <a href="https://www.rstudio.com/resources/videos/whats-new-with-the-ide/">link</a></h2>
 <ul>
-<li>uses up to date version 1.0.136 in the talk</li>
+<li>uses up to date version 1.0.136 in the talk
+<ul>
 <li>lots of autocompletion via tab, in different linces, in and outside of functions, fuzzily, for paths, …</li>
 <li>works also nice when implementing shiny stuff</li>
 <li>is smart to know, when u want…for example an environment, options, …</li>
 <li>autocompletes the methods for object.method syntax within rcpp</li>
+</ul></li>
 <li>there is a new “Rstudio Home button” in the rstudio-file-pane</li>
-<li>diagnostics</li>
+<li>diagnostics
+<ul>
 <li>u get symbols noting when code is expected to fail, because of some syntax related errors,</li>
 <li>but there are some other cool thins, like unknown function arguments, no definition in scope, defined, but not used</li>
 <li>configurable inside options -&gt; diagnostics</li>
 <li>some small things, like defining whitespaces around binary operators.</li>
+</ul></li>
 <li>command + enter executes a whole expression</li>
 <li>cmd + alt + shift + up/down to expand selections, for example if statements</li>
 <li>rename in (parent/bracket) scope (can be done via the gui, but there is also a shortcut)</li>
@@ -864,20 +886,20 @@ $(document).ready(function () {
 <li>can execute and render python (and many other) chunks (uses default engine, but you can set this path)</li>
 <li>alt + shift + k for shortcuts</li>
 </ul>
-</div>
-<div id="talk-26-22-min-dashboards-made-easy-sean-lopp-link" class="section level2">
+</section>
+<section id="talk-26-22-min-dashboards-made-easy-sean-lopp-link" class="level2">
 <h2>talk 26 (22 min): Dashboards made easy – Sean Lopp <a href="https://www.rstudio.com/resources/videos/dashboards-made-easy/">link</a></h2>
 <ul>
 <li>two patterns that many db have in common: some imfo updates in real time, some only at specific timepoints</li>
 <li>interactivity</li>
-<li><ol style="list-style-type: decimal">
+<li><ol type="1">
 <li>use parameterized dashboards (access via rmarkdown render function)</li>
 </ol></li>
-<li><ol start="2" style="list-style-type: decimal">
+<li><ol start="2" type="1">
 <li>bring it into a flexdashboard</li>
 </ol></li>
 <li>also differences between different parameter results will be visible</li>
-<li><ol start="3" style="list-style-type: decimal">
+<li><ol start="3" type="1">
 <li>Dashboard + Shiny, enables you to include changes at runtime, and more user interactivity.</li>
 </ol></li>
 <li>difference for shiny: now we are creating an app instead of an html. We need to host it.</li>
@@ -888,8 +910,8 @@ $(document).ready(function () {
 <li>demo: “weatehr updates every day, and everything is pulled in once a day”</li>
 <li>in future: use shiny_prerendered for calling apis on a regular basis for some dashboard…</li>
 </ul>
-</div>
-<div id="talk-27-21-min-rstudio-server-pro-power-tools-jonathan-mcpherson-link" class="section level2">
+</section>
+<section id="talk-27-21-min-rstudio-server-pro-power-tools-jonathan-mcpherson-link" class="level2">
 <h2>talk 27 (21 min): RStudio Server Pro Power Tools – Jonathan McPherson <a href="https://www.rstudio.com/resources/videos/rstudio-server-pro-power-tools/">link</a></h2>
 <ul>
 <li>big, complex product, many people use it because of one or two features and have no idea that you can do a bunch of cool stuff with it.</li>
@@ -914,8 +936,8 @@ $(document).ready(function () {
 <li>Graphite monitoring (really easy configurable) gives you lots of monitoring data and options</li>
 <li>paired projects an code reviewing. shared sessions can be not optimal, but in RStudio Server Pro you have an option “follow their cursor”.</li>
 </ul>
-</div>
-<div id="talk-28-33-min-making-websites-with-r-yihui-xie-link" class="section level2">
+</section>
+<section id="talk-28-33-min-making-websites-with-r-yihui-xie-link" class="level2">
 <h2>talk 28 (33 min): Making Websites with R – Yihui Xie <a href="https://www.rstudio.com/resources/videos/making-websites-with-r/">link</a></h2>
 <ul>
 <li>(a sneak peak of blogdown)
@@ -958,8 +980,8 @@ $(document).ready(function () {
 <li>hugo has everything we want, except rmarkdown…before blogdown…</li>
 <li>if a theme does not work with blogdown, it might afford one or small simple tweaks, to make it work.</li>
 </ul>
-</div>
-<div id="talk-29-120-min-customizing-and-extending-r-markdown-yihui-xie-link" class="section level2">
+</section>
+<section id="talk-29-120-min-customizing-and-extending-r-markdown-yihui-xie-link" class="level2">
 <h2>talk 29 (120 min): Customizing and Extending R Markdown – Yihui Xie <a href="https://www.rstudio.com/resources/videos/customizing-extending-r-markdown/">link</a></h2>
 <ul>
 <li>most important field in yml is “output”</li>
@@ -974,37 +996,43 @@ $(document).ready(function () {
 <li>you can use some pandoc template to build up another template, which makes you much more flexible. read the pandoc documentation minimum once before you do, to know what pandoc options are available.</li>
 <li>some examples of extensions are: bookdown, xaringan (remark.js translation to r [for cooler slides]), flexdashboard, tufte, rticles, prettydoc, blogdown</li>
 </ul>
-</div>
-<div id="talk-30-24-min-understand-code-performance-with-the-profiler-winston-chang-link" class="section level2">
+</section>
+<section id="talk-30-24-min-understand-code-performance-with-the-profiler-winston-chang-link" class="level2">
 <h2>talk 30 (24 min): Understand Code Performance with the profiler – Winston Chang <a href="https://www.rstudio.com/resources/videos/understand-code-performance-with-the-profiler/">link</a></h2>
 <ul>
 <li>hot about how to make r faster</li>
 <li>about why is my code slow</li>
-<li>example of normalization via apply and subtraction of means</li>
+<li>example of normalization via apply and subtraction of means
+<ul>
 <li>benchmark with system.time</li>
 <li>another way of benchmarking is Rprof() some code Rprof(NULL),
 <ul>
 <li>every 20 milliseconds you get a snapshot of the call tree</li>
 </ul></li>
+</ul></li>
 <li>to get a better resolution use profvis (on cran) use profvis({some code}) or use the rstudio ide select some lines and select profile -&gt; profile selected lines from the menu -&gt; you get different interactive visualisations/apps/widgets which visualise the timeings the call stack and even the garbage collections during the execution</li>
-<li>you can use this like microbenchmark:</li>
+<li>you can use this like microbenchmark:
+<ul>
 <li>profvis({alternative 1 alternative 2 alternative 3})</li>
+</ul></li>
 <li>shows some interesting details from the implementation as example -&gt; detail: data.frame creation is relatively slow. he solved the vectors in a list instead of creating a data.frame, which gave good speedup</li>
 <li>you can publish your profvis outputs to rstudioconnect or rpubs</li>
 <li>or you can safe your output also (it is an html file with extension rprofvis [for rstudio]) but you can reextend it to .html to open it in a browser</li>
 <li>you can profile a shiny app via profile and saving the ouput to disk and looking at it afterwards.</li>
 <li>you can source within profvis, to profile stuff from separate files easily</li>
 </ul>
-</div>
-<div id="talk-31-28-min-extending-r-with-c-a-brief-introduction-to-rcpp-dirk-eddelbuettel-link" class="section level2">
+</section>
+<section id="talk-31-28-min-extending-r-with-c-a-brief-introduction-to-rcpp-dirk-eddelbuettel-link" class="level2">
 <h2>talk 31 (28 min): Extending R with C++: A Brief Introduction to Rcpp – Dirk Eddelbuettel <a href="https://www.rstudio.com/resources/videos/extending-r-with-c-a-brief-introduction-to-rcpp/">link</a></h2>
 <ul>
 <li>computer age statistical inference by hastie and efron (book recommendation)</li>
 <li>in this state of the art book, everything is done with r :)</li>
-<li>extendig r by j. m. chambers, opening in chapter 1:</li>
+<li>extendig r by j. m. chambers, opening in chapter 1:
+<ul>
 <li>everything in r is an object</li>
 <li>everything that happens in r is a function call</li>
 <li>interfaces to other software are a part of r</li>
+</ul></li>
 <li>r is a c program (and r and fortran, …) and you can expand this, so there is already an api, via the .call interface, .c is deprecated.</li>
 <li>you always get an SEXP back (mapping from r objects to c), we can have this for all r objects.</li>
 <li>dont need to do memory allocation, just allocate a vector…</li>
@@ -1015,15 +1043,17 @@ $(document).ready(function () {
 <li>rcpp function initialisation does compile, link, load</li>
 <li>use it in/with packages. do “package with rcpp” when creating a package</li>
 <li>u can extend your packages with templates for rcpp, eigen, armadillo, devtools</li>
-<li>3 ways to extend r with rcpp</li>
+<li>3 ways to extend r with rcpp
+<ul>
 <li>just use the rcpp objects</li>
 <li>use LinkingTo for other only header pacakges like, eigen, armadillo, BH</li>
 <li>doable: external libraries may require a little bit more work but entirely feasible</li>
+</ul></li>
 <li>many rcpp versions of ml algorithms available</li>
 <li>gallery rcpp with 100 examples, + book, + website</li>
 </ul>
-</div>
-<div id="talk-32-21-min-r-notebook-workflows-jonathan-mcpherson-link" class="section level2">
+</section>
+<section id="talk-32-21-min-r-notebook-workflows-jonathan-mcpherson-link" class="level2">
 <h2>talk 32 (21 min): R Notebook Workflows – Jonathan McPherson <a href="https://www.rstudio.com/resources/videos/r-notebook-workflows/">link</a></h2>
 <ul>
 <li>Jonathan McPherson is the “leader of the IDE”</li>
@@ -1035,39 +1065,41 @@ $(document).ready(function () {
 <li>2 hidden cmds, you can bind keyboard sequences to run between two chunks</li>
 <li>you can click on the navigation bar and land in the chunk that is currently running</li>
 <li>there is a shortcut to collapse all codechunks at once</li>
-<li>the notebookchunks may not be reproducible, because they can have been run in any order. workarounds:</li>
+<li>the notebookchunks may not be reproducible, because they can have been run in any order. workarounds:
+<ul>
 <li>knit from a fresh rstudio version</li>
 <li>before you run a chunk, run all chunks before it</li>
+</ul></li>
 <li>when chunks are run, the output lands into the chache. When you safe a notebook, the cache is combined with the document. you get 1. the cache, 2. the document, 3. the underlying code (all three in one notebook)</li>
 <li>it is an html file (selfcontained)</li>
 <li>you can render to a different outputformat</li>
-<li>publish to another format.</li>
+<li>publish to another format.
+<ul>
 <li>nb can be notebooks and html</li>
 <li>nb can be notebooks and pdf</li>
 <li>nb can be notebooks and github…, …</li>
+</ul></li>
 <li>one of the formats can be run iterative and the other format can be guaranted to be reproducible</li>
 <li>publish and collaborate from rstudio connect</li>
 <li>when you open an old notebook within rstudio, you can get the saved output cache within your rstudio session.</li>
 <li>via download rmd you can get the code from the notebook.</li>
-<li>version control: 2 different options.</li>
-</ul>
-<ol style="list-style-type: decimal">
+<li>version control: 2 different options.
+<ol type="1">
 <li>put notebook into gitignore and only version control the rmarkdown. this ensures reproducibility.</li>
 <li>check the nb in version control. then input and output are versioned together. sometimes its nice, since not everything has to be executed again. If you do this, be aware that this can give conflicts in the output, which can’t be resolved. This gives priority to the collaborators changes on your original work.</li>
-</ol>
-<ul>
+</ol></li>
 <li>the r code in the notebook depends on version of r and packages. how to resolve this is still not clear, but for now it is recommended to use a packrat snapshot before sharing. Collaborator has to unbundle the (before bundled) nb file</li>
 <li>if you don’t want that a chunk is run be a collaborateur by default, you can just set eval = FALSE, but of course this chunk can still be ran manually.</li>
 </ul>
-</div>
-<div id="talk-33-18-min-rs-role-in-data-science-joseph-rickert-link" class="section level2">
+</section>
+<section id="talk-33-18-min-rs-role-in-data-science-joseph-rickert-link" class="level2">
 <h2>talk 33 (18 min): R’s Role in Data Science – Joseph Rickert <a href="https://www.rstudio.com/resources/videos/rs-role-in-data-science/">link</a></h2>
 <ul>
 <li><p>distinction of data engineering vs data science: “most of the time engineers know what they are doing”</p></li>
 <li><p>ds:bring scientific method into engineering …</p></li>
 </ul>
-</div>
-<div id="talk-34-66-min-all-things-r-and-rstudio-q-a-with-j.j.-allaire-hadley-wickham-joe-cheng-moderator-joseph-rickert-link" class="section level2">
+</section>
+<section id="talk-34-66-min-all-things-r-and-rstudio-q-a-with-j.j.-allaire-hadley-wickham-joe-cheng-moderator-joseph-rickert-link" class="level2">
 <h2>Talk 34 (66 min): All Things R and RStudio, Q &amp; A with J.J. Allaire, Hadley Wickham &amp; Joe Cheng, Moderator: Joseph Rickert <a href="https://www.rstudio.com/resources/videos/all-things-r-and-rstudio/">link</a></h2>
 <p><strong>upcoming:</strong></p>
 <ul>
@@ -1079,7 +1111,7 @@ $(document).ready(function () {
 <li>64bit integers</li>
 <li>out of memory vectors (pointers)</li>
 </ul>
-</div>
+</section>
 
 
 

@@ -1,0 +1,163 @@
+---
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+---
+
+## Democratizing Intelligence - Sri Ambati, CEO & Co-Founder, H2O.ai (54.50)
+* Overview
+* lot about auto ml
+
+## Fireside Chat with Jeff Herbst, VP Business Development, NVIDIA 47:56
+* interesting chat about the latest developments at NVIDIA
+
+## Convex Optimization - Stephen Boyd, Professor, Stanford University 51:06
+* general introduction about the idea of optimization and convex opt. and its relations to machine learning
+
+## H2O World 2017 Keynote - Jim McHugh, VP & GM of Data Center, NVIDIA 20:22
+* Role of GPU for ML and vice versa
+
+## Scaling Machine Learning at Booking.com with H2O Sparkling Water 29:54
+* general infrastructures for different usecases mainly oriented for going productive 
+
+## Driverless AI - Introduction and a Look Under the Hood + Hands-On Lab - Arno Candel, CTO, H2O.ai 58:45
+* Workthroug of Driverless AI
+
+## Deep Learning for the Enterprise - Sumit Gupta, IBM Cognitive Systems 25:04
+* A bit of marketing. IBM does development to semiautomatic data labelling, they also have the best scalability for gpus and sth else...
+
+## Intro to AutoML + Hands-on Lab - Erin LeDell, Machine Learning Scientist, H2O.ai 58:19
+* nice systematic overview about components in model building workflow and which of these components of each stage are already integrated into automl
+* shows the r api. Important is here to have the option of a leaderboard of models.
+* so far binary and multiclass classification + regression.
+* nice slides with links to collections of tutorial, videos etc.
+
+## Kaggle Grandmaster Panel 48:27
+* lots of questions answered. It could be more if not always every kaggle grandmaster had to answer every question :)
+
+## Talk by Matt Dowle, Main Author of the data.table package in R 38:26
+* Some stories about the reputation of data.table, the development of data.table and the sometimes very deep dives into the technique, when solving issues. Announcing pydata.table
+
+## Distributed Learning of Rule Ensemble Models with H2O - Giovanni Seni, Amazon's A9 29:49
+* Basically try to convert notes of tree/forest into features and fit a linear model to get coefficients. Productionized the rule ensemble within h2o via SQL code. "Models published as data". Runs as batch job in SQL engine. Online in Java environment.
+
+## Leakage in Meta Modeling And Its Connection to HCC Target-Encoding - Mathias Müller, H2O.ai 29:26
+* super interesting talk, very related to ensemble learning.
+
+## How to design deep networks to process images on mobile devices - SK Reddy, Digitalist Group 29:43
+* current ideas and tricks on the design for conv. neural netw. for image classification. relatively detailed.
+
+## Design Patterns for Machine Learning in Production - Sergei Izrailev, BeeswaxIO 25:58
+* lots of thoughts of things to have to be taken into account, when going to production.
+
+## MapD & H2O.ai: GPU-powered Visualization, Data Analysis and Machine Learning 30:05
+* Used Mapd for quick interactive visuals and reimplemented some ml algos...some benchmarks
+
+## Automatic Visualization - Leland Wilkinson, Chief Scientist, H2O.ai 29:22
+* speaks about the automatic visualisation, that appears, depending on the specific data. Mainly general visualisation is not solved. Much focus on aggregations and outliers.
+New outlier detection based on a lot of scagnostics, published and partwise implemented in auto ML. Lots of future plans like brushing, suggest features, ...
+Algorithm is also implemented in HDoutliers R package
+
+## Harnessing AI to Create a Trillion Dollar Asset Class - John Mercer, Ledger Investing 25:36
+* ...about insurance, didn't dive into the details...
+
+## H2O4GPU Hands-on Lab - Jonathan C. McKinney, Director of Research, H2O.ai 1:01:20
+* showing why and for which algos gpu support is already added to automl. examples: pca, svd, tree boosters,...additional design decisions for the architecture and also benchmarks to compare (mostly with scikitlearn) are added
+
+## Equifax Ignite, Bringing Data To Life - David Ferber & Pinaki Ghosh, Equifax 27:10
+* showing their own tool, which more or less creates an environment of many smaller tools for analytics and visualisation (like SAS and tableau). Data Munging is based on top of a quick and specified Hadoop layer. Tool seems relatively mature. Focus on quick development from migration to production.s
+
+## HR Analytics: Using Machine Learning to Predict Employee Turnover - Matt Dancho, Business Science 29:18
+* talks about his company business-science, lime and auto ml in r in the context of his blogarticle about employee turnover within company.
+
+## Hands-on Lab for Sparkling Water - Jakub Hava, Software Engineer, H2O.ai 58:10
+* overview about spark, h2o and sparkling water. technical example for sparkling waters via python within jupyter notebook
+
+## Bringing scientists to data to accelerate discoveries and improve human health - Somalee Datta 17:59
+* improving data base with an own architecture, including privacy concerns for stanford medical...afterwards research on data can be done directly.
+
+## Using H2O for Mobile Transaction Forecasting & Anomaly Detection - Capital One 25:44
+* usecase from business customer: amazon s3 -> sparkling water <-> influx db <-> Amazon EC2 and -> Grafana. Used GBM for timeseries forecasting...
+
+## Drive Away Fraudsters With Driverless AI - Venkatesh Ramanathan, Senior Data Scientist, PayPal 28:25
+* Want to detect Fraudsters which are collaborative buyers and sellers. Solution includes analysising automatically the sellers/buyers network structure and applying techniques similar to text2vec from NLP.
+
+## NLP with H2O, Supervised Learning with Unstructured Text Data - Megan Kurka, H2O.ai 18:08
+* word2vec is implemented in automl. used amazon reviews. recommends to use word2vec models from other datasets for robustnes. lstm and rnn used on the same problem in another talk.
+
+## Predicting and Preventing Avoidable Truck Rolls - Comcast 28:24
+* ai team at comcast has several different usecases...one cool thing is that customer behaviour during shows can be transcribed and then analysed via NLP techniques. This helps, since automatically scenes and highlights can be filtered for, shown and also recommended. They were trying to predict Truck Rolls. Again Network information was important...Now they try to prevalently predict these occurencies.
+
+## A 2017 retrospective on AI in Healthcare and Life Sciences - Sanjay Joshi, H2O.ai 19:19
+* quick overview of potentials and current ai solutions in these sectors
+
+## Repurposing data to solve emerging business problems - Arturo Castellanos, Baruch College (CUNY) 30:48
+* ...
+
+## Anti-Money Laundering - Ashrith Barthur, Security Scientist, H2O.ai 29:58
+* sources of money laundering: unrecorded sources of income, human trafficing, organised crime.
+* How does it affect us? - puppet government, less people have to pay more taxes, high crime rate is correlated to these sources as well.
+* How to catch currently: rule based systems for special behaviour -> example launderers make transactions under 10.000 since from 10.000 on the bank makes a note to the state...
+In the end these rules are evaluated...
+* usually this ends up in a classification task. One usecase where no labelled data was available was handled via k-means clustering.
+
+## Crowdsourcing, computer vision, and data science for conservation - Tanya Berger-Wolf, IBEIS.org 24:20
+* super exciting talk about animal classification at extraction of a lot of other information from animal pictures. Via identifying of specific individuals and the related timestamps, the path of the animal, the population of a species etc can be approximately recreated and visualized.
+* more or less: "following species over space, time and individuals" via public images.
+* currently 15 species are counted and for example for zebras, this seems to work very accurately.
+
+## Robust approach to machine learning models comparison - Dmitry Larko, Sr. Data Scientist, H2O.ai 25:11
+* some nice tricks for handling specific causes of problems.
+* example, outliers: 2 strategies. 1. remove them. 2. let them in, but remove them from validation test set. points to a previous kaggle competition (I thik mercedes Benz) where a team had a strong approach on automatic outlier detection. If outliers are introduced by error, take approach 1, if outliers are regarding artifacts in the data, choose approach 2. Within driverless ai there is a relatively more sophisticated approach based on extra automatic feature engineering in case of effects of outliers (as far as I understand).
+* lots of binary variables may work well for linear models or neural nets. 
+* If more mixed types of colums, then maybe more tree based, but with pca or svd for dimensionallity reduction for the binary columns before.
+* it might be r^2 is more sensitive to outliers than rmse
+* in general try to test a lot
+* when doing missing value imputation, you create a new column without missing values, but you also don't drop the original column or at least you have a binary extra column, which says orininally na and originally not na.
+* in general lots of binary or a category which is one hot encoded into 100 binaries are working well with linear models, but for trees this is some kind of overhead and may perform not so good, so other stuff lie autoencoding etc. dimensionalityreduction etc. should be tested...
+
+## Driverless AI Hands-On Focused on Machine Learning Interpretability - H2O.ai 57:29
+* explains explanation techniques. Shows options in Driverless AI.
+Most interesting questions: Why did you choose k-lime over lime implementation?
+- First k-lime is faster, since you dont have to perturbate inputs (calculate distances, is this really the case) and generate predictions + model for each new row. Second: It is easier to create evaluate local model predictions, since it is on real data and not just on sampled predictions for non real cases. Before he also mentioned that it could have better chances for regulated business. On the other hand, lime could often have better modells than k-lime.
+
+## An Application of the Lasso in Biomedical data sciences - Rob Tibshirani, Stanford University 32:28
+* "How many units of platelets will the stanford university need tomorrow?" Problem: these specific platelets only last 5 days, so overall 8% per year is overordered per year and thrown away. Might be greatly applicable to problems in retail or logistics like ordering groceries for a supermarket.
+
+Note: lasso feature selection does selection for linear models without regard of interactions, so important features for other models like gbm etc. might be filtered out...
+
+## Driver vs Driverless AI - Mark Landry, Competitive Data Scientist and Product Manager, H2O.ai 20:11
+* Basically about understanding and just using the engineered features, which the driverless ai created.
+* finished in kaggle competition at 6th using driverless ai...
+
+## Financial Services Panel - Accenture, Capital One, Equifax, Experian, H2O.ai, Socure 45:22
+...
+
+## AutoKazanova42 - Marios Michailidis, Research Data Scientist, H2O.ai 36:16
+* introduction to ensembles and the idea of automizing the pipeline
+
+## Explaining Black-Box Machine Learning Predictions - Sameer Singh, UC Irvine 35:35
+* describes a bit the order of interpretable, complex and again interpretable available techniques
+* Motivation for lime
+* differentiating bad and good classifiers in the sense of lime
+* motivating anchors, which are artificial training data like "the weather is not bad", "the food is not bad" etc. Basically just create training data with specific target to create strong indication for an explainr.
+
+## AI in Enterprise Panel - DataScience.com, Enlitic, Fastdata.io, Kespry, MapD 29:28
+* ... 
+
+## Automating Data Science with Robots - Pablo Abreu, VP Head of Data Science, Socure 26:19
+* ...
+## Healthcare, Spark, H2O, EMR, Production - Adam Sullivan, Change Healthcare 27:39
+* Describes Data Science Workflow at Change Healthcare...
+
+## Natural Language Processing - Darren Cook, Director, QQ Trend 29:11
+* Why and when to use word embeddings. PCA, GLRM, Auto-Encoder and word embeddings are the implemented dimension reduction techniques in H20. Word embeddings: better solution than one hot encoding for text data. Idea: See which words occur in same contexts? These words might have the same grammar functionality or the same meaning. Vectors like girl, boy or queen, king look often very similar and it can become possible to do arithmetic operations.
+
+Example: 10 sentences like: I like to drive a blue/green/... lorry/ferrari/...
+First step tokenization. I. e. split on white space.
+Sedond: Word 2 vec can be applied and data can be visualized. Parameters are epochs (training) and dimensions. If more than two dimensions are applied, afterwards a PCA can be applied to better visualise the data in 2 dimensions. Depending on the language you need a different preprocessing and a different tokenization, but the rest is the same. With tokenization you can also get information if word is a verb, noun etc. also ngrams can be thrown into the algo.
+There are pre made corpuses and domain specific ones. But they have used specific considerations about punctuation and stop words, which might not fit your needs. You can train word2vec yourself. It's not too cpu expensive.
+
+## Healthcare Panel - Change Healthcare, Kaiser Permanente, Sanofi, Stanford University 34:06
+* ...
